@@ -70,7 +70,6 @@
                 <input name="产品名称" placeholder="例：智能手表">
             </div>
         </div>
-
         <div class="flex-row">
             <div>
                 <label>产品型号</label>
@@ -80,13 +79,6 @@
                 <label>预计生产数量</label>
                 <input type="number" name="预计生产数量" placeholder="例：5000" min="0">
             </div>
-        </div>
-
-        <label>产品尺寸 (长×宽×高 mm)</label>
-        <div class="flex-row">
-            <input type="number" name="长" placeholder="长" min="0">
-            <input type="number" name="宽" placeholder="宽" min="0">
-            <input type="number" name="高" placeholder="高" min="0">
         </div>
     </div>
 
@@ -198,34 +190,34 @@
 </form>
 
 <script>
-document.getElementById('packagingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+    document.getElementById('packagingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
 
-    let previewHtml = '<ul>';
-    formData.forEach((value, key) => {
-        previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+        let previewHtml = '<ul>';
+        formData.forEach((value, key) => {
+            previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+        });
+        previewHtml += '</ul>';
+        document.getElementById('confirmation-content').innerHTML = previewHtml;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if(res.ok){
+                document.getElementById('confirmation-message').style.display='block';
+                form.reset();
+                window.scrollTo(0,0);
+            } else {
+                alert('提交失败，请稍后再试！');
+            }
+        })
+        .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
     });
-    previewHtml += '</ul>';
-    document.getElementById('confirmation-content').innerHTML = previewHtml;
-
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
-    .then(res => {
-        if(res.ok){
-            document.getElementById('confirmation-message').style.display='block';
-            form.reset();
-            window.scrollTo(0,0);
-        } else {
-            alert('提交失败，请稍后再试！');
-        }
-    })
-    .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
-});
 </script>
 </body>
 </html>
