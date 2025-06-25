@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>产品包装需求及成本估算表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
         font-family: 'Microsoft YaHei', sans-serif;
@@ -42,10 +43,9 @@
     #confirmation-message li { padding:8px; border-bottom:1px solid #eee; }
     #confirmation-message .thanks { margin-top:20px; font-size:1.1em; color:#155724; text-align:center; }
 </style>
-<!-- 引入EmailJS库 -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-    emailjs.init('aw0HYwh4ZKPhCW6q6'); // Public Key
+    emailjs.init('aw0HYwh4ZKPhCW6q6'); // 你的Public Key
 </script>
 </head>
 <body>
@@ -59,7 +59,7 @@
 </div>
 
 <form id="packagingForm">
-    <!-- 基础信息 -->
+    <!-- 1. 基础信息 -->
     <div class="form-section">
         <h2>1. 基础信息</h2>
         <div class="flex-row">
@@ -84,7 +84,7 @@
         </div>
     </div>
 
-    <!-- 外包装配置 -->
+    <!-- 2. 外包装配置 -->
     <div class="form-section">
         <h2>2. 外包装配置</h2>
         <label>包装盒类型</label>
@@ -119,7 +119,7 @@
         </div>
     </div>
 
-    <!-- 内包装配置 -->
+    <!-- 3. 内包装配置 -->
     <div class="form-section">
         <h2>3. 内包装配置</h2>
         <label>PE袋？</label>
@@ -144,7 +144,7 @@
         </div>
     </div>
 
-    <!-- 配件包装 -->
+    <!-- 4. 配件包装 -->
     <div class="form-section">
         <h2>4. 配件包装</h2>
         <label>配件清单</label>
@@ -169,7 +169,7 @@
         </div>
     </div>
 
-    <!-- 包装成本参考 -->
+    <!-- 5. 包装成本参考 -->
     <div class="form-section">
         <h2>5. 包装成本参考</h2>
         <label>客户期待成本价（单件）</label>
@@ -182,7 +182,7 @@
         </div>
     </div>
 
-    <!-- 其他要求 -->
+    <!-- 6. 其他要求 -->
     <div class="form-section">
         <h2>6. 其他要求</h2>
         <textarea name="其他要求" placeholder="如特殊印刷工艺/环保认证等"></textarea>
@@ -196,27 +196,33 @@ document.getElementById('packagingForm').addEventListener('submit', function(e) 
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
+
     let contentHtml = '<h2>客户提交信息</h2><ul>';
     formData.forEach((value, key) => {
-        contentHtml += `<li><strong>${key}：</strong> ${value}</li>`;
+        contentHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
     });
     contentHtml += '</ul>';
 
-    // 显示给用户确认信息
+    // 显示提交确认信息
     document.getElementById('confirmation-content').innerHTML = contentHtml;
-    document.getElementById('confirmation-message').style.display = 'block';
+    document.getElementById('confirmation-message').style.display='block';
     window.scrollTo(0,0);
 
-    // 发送Email
-    emailjs.send('service_44viaar', 'template_a4diuqb', { message_html: contentHtml })
+    // 调用 EmailJS
+    emailjs.send(
+      'service_44viaar',
+      'template_a4diuqb',
+      { message_html: contentHtml }
+    )
     .then(res => {
         form.reset();
     })
     .catch(err => {
-        alert('提交出错！请联系管理员');
+        alert('发送出错！请联系管理员');
         console.error(err);
     });
 });
 </script>
+
 </body>
 </html>
