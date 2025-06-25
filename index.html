@@ -155,18 +155,23 @@
         <h2>4. 配件包装</h2>
         <label>配件清单</label>
         <textarea name="配件清单" placeholder="如：充电线×1、说明书×1"></textarea>
+
         <label>说明书需要</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="说明书需要" value="需要"> 需要</label>
             <label class="checkbox-item"><input type="radio" name="说明书需要" value="不需要" checked> 不需要</label>
         </div>
+
         <label>说明书语言</label>
         <input name="说明书语言" placeholder="例如：中、英">
+
         <label>配件独立包装方式</label>
         <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="无"> 无</label>
             <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="PE袋"> PE袋</label>
             <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="纸卡盒"> 纸卡盒</label>
             <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="吸塑壳"> 吸塑壳</label>
+            <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="其它"> 其它 <input name="其他包装方式" placeholder="请填写"></label>
         </div>
     </div>
 
@@ -178,12 +183,8 @@
 
         <label style="margin-top: 20px;">外箱要求</label>
         <div class="flex-row">
-            <div>
-                <input name="外箱要求" placeholder="例如：五层瓦楞纸双坑">
-            </div>
-            <div>
-                <input name="多少个一箱" placeholder="例如：20个/箱" type="number" min="0">
-            </div>
+            <div><input name="外箱要求" placeholder="例如：五层瓦楞纸双坑"></div>
+            <div><input name="多少个一箱" placeholder="例如：20个/箱" type="number" min="0"></div>
         </div>
     </div>
 
@@ -197,34 +198,34 @@
 </form>
 
 <script>
-    document.getElementById('packagingForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
+document.getElementById('packagingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
 
-        let previewHtml = '<ul>';
-        formData.forEach((value, key) => {
-            previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
-        });
-        previewHtml += '</ul>';
-        document.getElementById('confirmation-content').innerHTML = previewHtml;
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {'Accept': 'application/json'}
-        })
-        .then(res => {
-            if(res.ok){
-                document.getElementById('confirmation-message').style.display='block';
-                form.reset();
-                window.scrollTo(0,0);
-            } else {
-                alert('提交失败，请稍后再试！');
-            }
-        })
-        .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
+    let previewHtml = '<ul>';
+    formData.forEach((value, key) => {
+        previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
     });
+    previewHtml += '</ul>';
+    document.getElementById('confirmation-content').innerHTML = previewHtml;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(res => {
+        if(res.ok){
+            document.getElementById('confirmation-message').style.display='block';
+            form.reset();
+            window.scrollTo(0,0);
+        } else {
+            alert('提交失败，请稍后再试！');
+        }
+    })
+    .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
+});
 </script>
 </body>
 </html>
