@@ -40,10 +40,6 @@
             font-weight: bold;
             color: #2c3e50;
         }
-        .required:after {
-            content: " *";
-            color: #e74c3c;
-        }
         input, select, textarea {
             width: 100%;
             padding: 12px;
@@ -116,11 +112,11 @@
             
             <div class="flex-row">
                 <div>
-                    <label for="brand_name" class="required">品牌名称</label>
+                    <label for="brand_name">品牌名称</label>
                     <input type="text" id="brand_name" name="brand_name" required placeholder="例：XX品牌">
                 </div>
                 <div>
-                    <label for="product_name" class="required">产品名称</label>
+                    <label for="product_name">产品名称</label>
                     <input type="text" id="product_name" name="product_name" required placeholder="例：智能手表">
                 </div>
             </div>
@@ -131,12 +127,12 @@
                     <input type="text" id="product_model" name="product_model" placeholder="例：Pro Max 2024">
                 </div>
                 <div>
-                    <label for="quantity" class="required">预计生产数量</label>
+                    <label for="quantity">预计生产数量</label>
                     <input type="number" id="quantity" name="quantity" placeholder="例：5000" required min="100">
                 </div>
             </div>
             
-            <label for="product_size" class="required">产品尺寸 (长×宽×高 mm)</label>
+            <label for="product_size">产品尺寸 (长×宽×高 mm)</label>
             <div class="flex-row">
                 <input type="number" id="length" name="length" placeholder="长" required min="1">
                 <input type="number" id="width" name="width" placeholder="宽" required min="1">
@@ -148,7 +144,7 @@
         <div class="form-section">
             <h2>2. 外包装配置</h2>
             
-            <label class="required">包装盒类型</label>
+            <label>包装盒类型</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
                     <input type="radio" name="box_type" value="top_bottom" required checked> 天地盒
@@ -162,7 +158,7 @@
                 </label>
             </div>
             
-            <label class="required">盒体材质</label>
+            <label>盒体材质</label>
             <select name="material" required onchange="updateCostEstimate()">
                 <option value="">-- 请选择 --</option>
                 <option value="white_card">白卡纸（250-350g）</option>
