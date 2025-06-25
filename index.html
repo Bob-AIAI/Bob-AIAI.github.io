@@ -11,9 +11,7 @@
         padding: 20px;
         background: #f5f9fc;
     }
-    h1, h2 {
-        color: #3498db;
-    }
+    h1, h2 { color: #3498db; }
     h1 { text-align: center; }
     .form-section {
         background: white;
@@ -39,7 +37,7 @@
         border-radius:8px;
         box-shadow:0 3px 8px rgba(0,0,0,0.08);
     }
-    #confirmation-message h2 { color:#2c3e50; }
+    #confirmation-message h2 { margin-top:0; color:#2c3e50; }
     #confirmation-message ul { list-style:none; padding:0; }
     #confirmation-message li { padding:8px; border-bottom:1px solid #eee; }
     #confirmation-message .thanks { margin-top:20px; font-size:1.1em; color:#155724; text-align:center; }
@@ -72,6 +70,7 @@
                 <input name="产品名称" placeholder="例：智能手表">
             </div>
         </div>
+
         <div class="flex-row">
             <div>
                 <label>产品型号</label>
@@ -82,6 +81,7 @@
                 <input type="number" name="预计生产数量" placeholder="例：5000" min="0">
             </div>
         </div>
+
         <label>产品尺寸 (长×宽×高 mm)</label>
         <div class="flex-row">
             <input type="number" name="长" placeholder="长" min="0">
@@ -99,6 +99,7 @@
             <label class="checkbox-item"><input type="radio" name="包装盒类型" value="飞机盒"> 飞机盒</label>
             <label class="checkbox-item"><input type="radio" name="包装盒类型" value="其他"> 其他 <input name="其他盒型" placeholder="请填写"></label>
         </div>
+
         <label>盒体材质</label>
         <select name="盒体材质">
             <option value="">--请选择--</option>
@@ -109,12 +110,14 @@
             <option value="特种纸（需定制）">特种纸（需定制）</option>
             <option value="其它">其它</option>
         </select>
+
         <label>表面工艺</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="亮膜" checked> 亮膜</label>
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="哑膜"> 哑膜</label>
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="其它"> 其它 <input name="其他工艺" placeholder="请填写"></label>
         </div>
+
         <label>是否需要热缩膜？</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="热缩膜" value="需要"> 需要</label>
@@ -130,12 +133,14 @@
             <label class="checkbox-item"><input type="radio" name="PE袋" value="需要"> 需要</label>
             <label class="checkbox-item"><input type="radio" name="PE袋" value="不需要" checked> 不需要</label>
         </div>
+
         <label>缓冲材料</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="珍珠棉"> 珍珠棉</label>
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="EPE泡沫"> EPE泡沫</label>
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="纸托"> 纸托</label>
         </div>
+
         <label>产品收纳袋</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="无纺布" checked> 无纺布</label>
@@ -170,6 +175,16 @@
         <h2>5. 包装成本参考</h2>
         <label>客户期待成本价（单件）</label>
         <input name="客户期待成本价" placeholder="请输入您的目标单价（元）" type="number" step="0.01" min="0">
+
+        <label style="margin-top: 20px;">外箱要求</label>
+        <div class="flex-row">
+            <div>
+                <input name="外箱要求" placeholder="例如：五层瓦楞纸双坑">
+            </div>
+            <div>
+                <input name="多少个一箱" placeholder="例如：20个/箱" type="number" min="0">
+            </div>
+        </div>
     </div>
 
     <!-- 6. 其他要求 -->
@@ -197,7 +212,7 @@
         fetch(form.action, {
             method: 'POST',
             body: formData,
-            headers: { 'Accept': 'application/json' }
+            headers: {'Accept': 'application/json'}
         })
         .then(res => {
             if(res.ok){
