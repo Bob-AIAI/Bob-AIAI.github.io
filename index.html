@@ -1,201 +1,220 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>产品包装需求及成本估算表</title>
-    <style>
-        body {
-            font-family: 'Microsoft YaHei', sans-serif;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f9fc;
-        }
-        h1, h2 { color: #3498db; }
-        h1 { text-align: center; }
-        .form-section {
-            background: white;
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-        label { display: block; margin: 12px 0 4px; font-weight: bold; color: #2c3e50; }
-        input, select, textarea {
-            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;
-        }
-        .flex-row { display: flex; flex-wrap: wrap; gap: 15px; }
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; }
-        .checkbox-item { background:#f8fafc; padding:8px; border-radius:5px; }
-        .submit-btn { background:#3498db; color:white; padding:14px; border:none; border-radius:6px; cursor:pointer; width:100%; }
-        .submit-btn:hover { background:#2980b9; }
-        #success-message { display:none; background:#d4edda; padding:15px; color:#155724; border-radius:5px; text-align:center; margin:20px 0; }
-    </style>
+<meta charset="UTF-8">
+<title>产品包装需求及成本估算表</title>
+<style>
+    body {
+        font-family: 'Microsoft YaHei', sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f5f9fc;
+    }
+    h1, h2 {
+        color: #3498db;
+    }
+    h1 { text-align: center; }
+    .form-section {
+        background: white;
+        padding: 25px;
+        margin-bottom: 25px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    label { display: block; margin: 12px 0 4px; font-weight: bold; color: #2c3e50; }
+    input, select, textarea {
+        width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;
+    }
+    .flex-row { display: flex; flex-wrap: wrap; gap: 15px; }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; }
+    .checkbox-item { background:#f8fafc; padding:8px; border-radius:5px; }
+    .submit-btn { background:#3498db; color:white; padding:14px; border:none; border-radius:6px; cursor:pointer; width:100%; }
+    .submit-btn:hover { background:#2980b9; }
+    #success-message { display:none; background:#d4edda; padding:15px; color:#155724; border-radius:5px; text-align:center; margin:20px 0; }
+    #submitted-data { display:none; background:#ffffff; padding:20px; margin-top:20px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.08); }
+    #submitted-data h2 { margin-top:0; color:#2c3e50; }
+    #submitted-content ul { list-style:none; padding:0; }
+    #submitted-content li { padding:8px; border-bottom:1px solid #eee; }
+</style>
 </head>
 <body>
-    <h1>产品包装需求及成本估算表</h1>
-    <div id="success-message">您的信息已提交，我们会尽快与您联系！</div>
 
-    <form id="packagingForm" action="https://formspree.io/f/meokpalq" method="POST">
-        <!-- 1. 基础信息 -->
-        <div class="form-section">
-            <h2>1. 基础信息</h2>
-            <input type="hidden" name="_replyto" value="yuanqq2@gmail.com">
-            <input type="hidden" name="_subject" value="新包装需求提交">
+<h1>产品包装需求及成本估算表</h1>
+<div id="success-message">您的信息已提交，我们会尽快与您联系！</div>
 
-            <div class="flex-row">
-                <div>
-                    <label>品牌名称</label>
-                    <input name="brand_name" placeholder="例：XX品牌">
-                </div>
-                <div>
-                    <label>产品名称</label>
-                    <input name="product_name" placeholder="例：智能手表">
-                </div>
+<!-- 卡片式显示用户提交的信息 -->
+<div id="submitted-data">
+    <h2>您的提交信息</h2>
+    <div id="submitted-content"></div>
+</div>
+
+<form id="packagingForm" action="https://formspree.io/f/meokpalq" method="POST">
+    <!-- 1. 基础信息 -->
+    <div class="form-section">
+        <h2>1. 基础信息</h2>
+        <input type="hidden" name="_replyto" value="yuanqq2@gmail.com">
+        <input type="hidden" name="_subject" value="新包装需求提交">
+
+        <div class="flex-row">
+            <div>
+                <label>品牌名称</label>
+                <input name="品牌名称" placeholder="例：XX品牌">
             </div>
-
-            <div class="flex-row">
-                <div>
-                    <label>产品型号</label>
-                    <input name="product_model" placeholder="例：Pro Max 2024">
-                </div>
-                <div>
-                    <label>预计生产数量</label>
-                    <input type="number" name="quantity" placeholder="例：5000" min="0">
-                </div>
-            </div>
-
-            <label>产品尺寸 (长×宽×高 mm)</label>
-            <div class="flex-row">
-                <input type="number" name="length" placeholder="长" min="0">
-                <input type="number" name="width" placeholder="宽" min="0">
-                <input type="number" name="height" placeholder="高" min="0">
+            <div>
+                <label>产品名称</label>
+                <input name="产品名称" placeholder="例：智能手表">
             </div>
         </div>
 
-        <!-- 2. 外包装配置 -->
-        <div class="form-section">
-            <h2>2. 外包装配置</h2>
-            <label>包装盒类型</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="包装盒类型" value="天地盒" checked> 天地盒</label>
-                <label class="checkbox-item"><input type="radio" name="包装盒类型" value="飞机盒"> 飞机盒</label>
-                <label class="checkbox-item"><input type="radio" name="包装盒类型" value="其他"> 其他 <input name="其他盒型" placeholder="请填写"></label>
+        <div class="flex-row">
+            <div>
+                <label>产品型号</label>
+                <input name="产品型号" placeholder="例：Pro Max 2024">
             </div>
-
-            <label>盒体材质</label>
-            <select name="盒体材质">
-                <option value="">--请选择--</option>
-                <option value="白卡纸（250-350g）">白卡纸（250-350g）</option>
-                <option value="牛皮纸（双层）">牛皮纸（双层）</option>
-                <option value="铜版纸（覆膜）">铜版纸（覆膜）</option>
-                <option value="瓦楞纸（B楞/E楞）">瓦楞纸（B楞/E楞）</option>
-                <option value="特种纸（需定制）">特种纸（需定制）</option>
-                <option value="其它">其它</option>
-            </select>
-
-            <label>表面工艺</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="表面工艺" value="亮膜" checked> 亮膜</label>
-                <label class="checkbox-item"><input type="radio" name="表面工艺" value="哑膜"> 哑膜</label>
-                <label class="checkbox-item"><input type="radio" name="表面工艺" value="其它"> 其它 <input name="其他工艺" placeholder="请填写"></label>
-            </div>
-
-            <label>是否需要热缩膜？</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="热缩膜" value="需要"> 需要</label>
-                <label class="checkbox-item"><input type="radio" name="热缩膜" value="不需要" checked> 不需要</label>
+            <div>
+                <label>预计生产数量</label>
+                <input type="number" name="预计生产数量" placeholder="例：5000" min="0">
             </div>
         </div>
 
-        <!-- 3. 内包装配置 -->
-        <div class="form-section">
-            <h2>3. 内包装配置</h2>
-            <label>PE袋？</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="PE袋" value="需要"> 需要</label>
-                <label class="checkbox-item"><input type="radio" name="PE袋" value="不需要" checked> 不需要</label>
-            </div>
+        <label>产品尺寸 (长×宽×高 mm)</label>
+        <div class="flex-row">
+            <input type="number" name="长" placeholder="长" min="0">
+            <input type="number" name="宽" placeholder="宽" min="0">
+            <input type="number" name="高" placeholder="高" min="0">
+        </div>
+    </div>
 
-            <label>缓冲材料</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="珍珠棉"> 珍珠棉</label>
-                <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="EPE泡沫"> EPE泡沫</label>
-                <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="纸托"> 纸托</label>
-            </div>
-
-            <label>产品收纳袋</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="无纺布" checked> 无纺布</label>
-                <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="绒布"> 绒布</label>
-                <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="收纳盒"> 收纳盒</label>
-                <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="其它"> 其它 <input name="其他收纳袋" placeholder="请填写"></label>
-            </div>
+    <!-- 2. 外包装配置 -->
+    <div class="form-section">
+        <h2>2. 外包装配置</h2>
+        <label>包装盒类型</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="包装盒类型" value="天地盒" checked> 天地盒</label>
+            <label class="checkbox-item"><input type="radio" name="包装盒类型" value="飞机盒"> 飞机盒</label>
+            <label class="checkbox-item"><input type="radio" name="包装盒类型" value="其他"> 其他 <input name="其他盒型" placeholder="请填写"></label>
         </div>
 
-        <!-- 4. 配件包装 -->
-        <div class="form-section">
-            <h2>4. 配件包装</h2>
-            <label>配件清单</label>
-            <textarea name="配件清单" placeholder="如：充电线×1、说明书×1"></textarea>
+        <label>盒体材质</label>
+        <select name="盒体材质">
+            <option value="">--请选择--</option>
+            <option value="白卡纸（250-350g）">白卡纸（250-350g）</option>
+            <option value="牛皮纸（双层）">牛皮纸（双层）</option>
+            <option value="铜版纸（覆膜）">铜版纸（覆膜）</option>
+            <option value="瓦楞纸（B楞/E楞）">瓦楞纸（B楞/E楞）</option>
+            <option value="特种纸（需定制）">特种纸（需定制）</option>
+            <option value="其它">其它</option>
+        </select>
 
-            <label>说明书需要</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="radio" name="说明书需要" value="需要"> 需要</label>
-                <label class="checkbox-item"><input type="radio" name="说明书需要" value="不需要" checked> 不需要</label>
-            </div>
-
-            <label>说明书语言</label>
-            <input name="说明书语言" placeholder="例如：中、英">
-
-            <label>配件独立包装方式</label>
-            <div class="checkbox-group">
-                <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="PE袋"> PE袋</label>
-                <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="纸卡盒"> 纸卡盒</label>
-                <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="吸塑壳"> 吸塑壳</label>
-            </div>
+        <label>表面工艺</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="表面工艺" value="亮膜" checked> 亮膜</label>
+            <label class="checkbox-item"><input type="radio" name="表面工艺" value="哑膜"> 哑膜</label>
+            <label class="checkbox-item"><input type="radio" name="表面工艺" value="其它"> 其它 <input name="其他工艺" placeholder="请填写"></label>
         </div>
 
-        <!-- 5. 包装成本参考 -->
-        <div class="form-section">
-            <h2>5. 包装成本参考</h2>
-            <label>客户期待成本价（单件）</label>
-            <input name="客户期待成本价" placeholder="请输入您的目标单价（元）" type="number" step="0.01" min="0">
+        <label>是否需要热缩膜？</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="热缩膜" value="需要"> 需要</label>
+            <label class="checkbox-item"><input type="radio" name="热缩膜" value="不需要" checked> 不需要</label>
+        </div>
+    </div>
+
+    <!-- 3. 内包装配置 -->
+    <div class="form-section">
+        <h2>3. 内包装配置</h2>
+        <label>PE袋？</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="PE袋" value="需要"> 需要</label>
+            <label class="checkbox-item"><input type="radio" name="PE袋" value="不需要" checked> 不需要</label>
         </div>
 
-        <!-- 6. 其他要求 -->
-        <div class="form-section">
-            <h2>6. 其他要求</h2>
-            <textarea name="其他要求" placeholder="如特殊印刷工艺/环保认证等"></textarea>
+        <label>缓冲材料</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="珍珠棉"> 珍珠棉</label>
+            <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="EPE泡沫"> EPE泡沫</label>
+            <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="纸托"> 纸托</label>
         </div>
 
-        <button type="submit" class="submit-btn">提交包装需求</button>
-    </form>
+        <label>产品收纳袋</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="无纺布" checked> 无纺布</label>
+            <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="绒布"> 绒布</label>
+            <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="收纳盒"> 收纳盒</label>
+            <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="其它"> 其它 <input name="其他收纳袋" placeholder="请填写"></label>
+        </div>
+    </div>
 
-    <script>
-        document.getElementById('packagingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            })
-            .then(res => {
-                if(res.ok){
-                    document.getElementById('success-message').style.display='block';
-                    form.reset();
-                    window.scrollTo(0,0);
-                } else {
-                    alert('提交失败，请稍后再试！');
-                }
-            })
-            .catch(err => {
-                alert('提交出错！请联系管理员');
-                console.error(err);
-            })
-        });
-    </script>
+    <!-- 4. 配件包装 -->
+    <div class="form-section">
+        <h2>4. 配件包装</h2>
+        <label>配件清单</label>
+        <textarea name="配件清单" placeholder="如：充电线×1、说明书×1"></textarea>
+
+        <label>说明书需要</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="radio" name="说明书需要" value="需要"> 需要</label>
+            <label class="checkbox-item"><input type="radio" name="说明书需要" value="不需要" checked> 不需要</label>
+        </div>
+
+        <label>说明书语言种类</label>
+        <input name="说明书语言" placeholder="例如：中、英">
+
+        <label>配件独立包装方式</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="PE袋"> PE袋</label>
+            <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="纸卡盒"> 纸卡盒</label>
+            <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="吸塑壳"> 吸塑壳</label>
+        </div>
+    </div>
+
+    <!-- 5. 包装成本参考 -->
+    <div class="form-section">
+        <h2>5. 包装成本参考</h2>
+        <label>客户期待成本价（单件）</label>
+        <input name="客户期待成本价" placeholder="请输入您的目标单价（元）" type="number" step="0.01" min="0">
+    </div>
+
+    <!-- 6. 其他要求 -->
+    <div class="form-section">
+        <h2>6. 其他要求</h2>
+        <textarea name="其他要求" placeholder="如特殊印刷工艺/环保认证等"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">提交包装需求</button>
+</form>
+
+<script>
+document.getElementById('packagingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    let previewHtml = '<ul>';
+    formData.forEach((value, key) => {
+        previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+    });
+    previewHtml += '</ul>';
+    document.getElementById('submitted-content').innerHTML = previewHtml;
+
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {'Accept': 'application/json'}
+    })
+    .then(res => {
+        if(res.ok){
+            document.getElementById('success-message').style.display='block';
+            document.getElementById('submitted-data').style.display='block';
+            form.reset();
+            window.scrollTo(0,0);
+        } else {
+            alert('提交失败，请稍后再试！');
+        }
+    })
+    .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
+});
+</script>
+
 </body>
 </html>
