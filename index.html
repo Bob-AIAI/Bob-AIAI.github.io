@@ -31,22 +31,28 @@
     .checkbox-item { background:#f8fafc; padding:8px; border-radius:5px; }
     .submit-btn { background:#3498db; color:white; padding:14px; border:none; border-radius:6px; cursor:pointer; width:100%; }
     .submit-btn:hover { background:#2980b9; }
-    #success-message { display:none; background:#d4edda; padding:15px; color:#155724; border-radius:5px; text-align:center; margin:20px 0; }
-    #submitted-data { display:none; background:#ffffff; padding:20px; margin-top:20px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.08); }
-    #submitted-data h2 { margin-top:0; color:#2c3e50; }
-    #submitted-content ul { list-style:none; padding:0; }
-    #submitted-content li { padding:8px; border-bottom:1px solid #eee; }
+    #confirmation-message {
+        display:none;
+        background:#ffffff;
+        padding:20px;
+        margin-top:20px;
+        border-radius:8px;
+        box-shadow:0 3px 8px rgba(0,0,0,0.08);
+    }
+    #confirmation-message h2 { color:#2c3e50; }
+    #confirmation-message ul { list-style:none; padding:0; }
+    #confirmation-message li { padding:8px; border-bottom:1px solid #eee; }
+    #confirmation-message .thanks { margin-top:20px; font-size:1.1em; color:#155724; text-align:center; }
 </style>
 </head>
 <body>
 
 <h1>产品包装需求及成本估算表</h1>
-<div id="success-message">您的信息已提交，我们会尽快与您联系！</div>
 
-<!-- 卡片式显示用户提交的信息 -->
-<div id="submitted-data">
+<div id="confirmation-message">
     <h2>您的提交信息</h2>
-    <div id="submitted-content"></div>
+    <div id="confirmation-content"></div>
+    <div class="thanks">感谢您的提交！我们会尽快与您联系。</div>
 </div>
 
 <form id="packagingForm" action="https://formspree.io/f/meokpalq" method="POST">
@@ -66,7 +72,6 @@
                 <input name="产品名称" placeholder="例：智能手表">
             </div>
         </div>
-
         <div class="flex-row">
             <div>
                 <label>产品型号</label>
@@ -77,7 +82,6 @@
                 <input type="number" name="预计生产数量" placeholder="例：5000" min="0">
             </div>
         </div>
-
         <label>产品尺寸 (长×宽×高 mm)</label>
         <div class="flex-row">
             <input type="number" name="长" placeholder="长" min="0">
@@ -95,7 +99,6 @@
             <label class="checkbox-item"><input type="radio" name="包装盒类型" value="飞机盒"> 飞机盒</label>
             <label class="checkbox-item"><input type="radio" name="包装盒类型" value="其他"> 其他 <input name="其他盒型" placeholder="请填写"></label>
         </div>
-
         <label>盒体材质</label>
         <select name="盒体材质">
             <option value="">--请选择--</option>
@@ -106,14 +109,12 @@
             <option value="特种纸（需定制）">特种纸（需定制）</option>
             <option value="其它">其它</option>
         </select>
-
         <label>表面工艺</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="亮膜" checked> 亮膜</label>
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="哑膜"> 哑膜</label>
             <label class="checkbox-item"><input type="radio" name="表面工艺" value="其它"> 其它 <input name="其他工艺" placeholder="请填写"></label>
         </div>
-
         <label>是否需要热缩膜？</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="热缩膜" value="需要"> 需要</label>
@@ -129,14 +130,12 @@
             <label class="checkbox-item"><input type="radio" name="PE袋" value="需要"> 需要</label>
             <label class="checkbox-item"><input type="radio" name="PE袋" value="不需要" checked> 不需要</label>
         </div>
-
         <label>缓冲材料</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="珍珠棉"> 珍珠棉</label>
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="EPE泡沫"> EPE泡沫</label>
             <label class="checkbox-item"><input type="checkbox" name="缓冲材料[]" value="纸托"> 纸托</label>
         </div>
-
         <label>产品收纳袋</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="产品收纳袋" value="无纺布" checked> 无纺布</label>
@@ -151,16 +150,13 @@
         <h2>4. 配件包装</h2>
         <label>配件清单</label>
         <textarea name="配件清单" placeholder="如：充电线×1、说明书×1"></textarea>
-
         <label>说明书需要</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="radio" name="说明书需要" value="需要"> 需要</label>
             <label class="checkbox-item"><input type="radio" name="说明书需要" value="不需要" checked> 不需要</label>
         </div>
-
-        <label>说明书语言种类</label>
+        <label>说明书语言</label>
         <input name="说明书语言" placeholder="例如：中、英">
-
         <label>配件独立包装方式</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="checkbox" name="包装方式[]" value="PE袋"> PE袋</label>
@@ -186,35 +182,34 @@
 </form>
 
 <script>
-document.getElementById('packagingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    let previewHtml = '<ul>';
-    formData.forEach((value, key) => {
-        previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+    document.getElementById('packagingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+
+        let previewHtml = '<ul>';
+        formData.forEach((value, key) => {
+            previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+        });
+        previewHtml += '</ul>';
+        document.getElementById('confirmation-content').innerHTML = previewHtml;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if(res.ok){
+                document.getElementById('confirmation-message').style.display='block';
+                form.reset();
+                window.scrollTo(0,0);
+            } else {
+                alert('提交失败，请稍后再试！');
+            }
+        })
+        .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
     });
-    previewHtml += '</ul>';
-    document.getElementById('submitted-content').innerHTML = previewHtml;
-
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {'Accept': 'application/json'}
-    })
-    .then(res => {
-        if(res.ok){
-            document.getElementById('success-message').style.display='block';
-            document.getElementById('submitted-data').style.display='block';
-            form.reset();
-            window.scrollTo(0,0);
-        } else {
-            alert('提交失败，请稍后再试！');
-        }
-    })
-    .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
-});
 </script>
-
 </body>
 </html>
