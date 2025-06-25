@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>产品包装需求及成本估算表</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
         font-family: 'Microsoft YaHei', sans-serif;
@@ -43,10 +42,6 @@
     #confirmation-message li { padding:8px; border-bottom:1px solid #eee; }
     #confirmation-message .thanks { margin-top:20px; font-size:1.1em; color:#155724; text-align:center; }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-    emailjs.init('aw0HYwh4ZKPhCW6q6'); // 你的Public Key
-</script>
 </head>
 <body>
 
@@ -58,10 +53,13 @@
     <div class="thanks">感谢您的提交！我们会尽快与您联系。</div>
 </div>
 
-<form id="packagingForm">
+<form id="packagingForm" action="https://formspree.io/f/meokpalq" method="POST">
     <!-- 1. 基础信息 -->
     <div class="form-section">
         <h2>1. 基础信息</h2>
+        <input type="hidden" name="_replyto" value="yuanqq2@gmail.com">
+        <input type="hidden" name="_subject" value="新包装需求提交">
+
         <div class="flex-row">
             <div>
                 <label>品牌名称</label>
@@ -192,37 +190,34 @@
 </form>
 
 <script>
-document.getElementById('packagingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+    document.getElementById('packagingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
 
-    let contentHtml = '<h2>客户提交信息</h2><ul>';
-    formData.forEach((value, key) => {
-        contentHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+        let previewHtml = '<ul>';
+        formData.forEach((value, key) => {
+            previewHtml += '<li><strong>'+ key +'：</strong> '+ value +'</li>';
+        });
+        previewHtml += '</ul>';
+        document.getElementById('confirmation-content').innerHTML = previewHtml;
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(res => {
+            if(res.ok){
+                document.getElementById('confirmation-message').style.display='block';
+                form.reset();
+                window.scrollTo(0,0);
+            } else {
+                alert('提交失败，请稍后再试！');
+            }
+        })
+        .catch(err => { alert('提交出错！请联系管理员'); console.error(err); })
     });
-    contentHtml += '</ul>';
-
-    // 显示提交确认信息
-    document.getElementById('confirmation-content').innerHTML = contentHtml;
-    document.getElementById('confirmation-message').style.display='block';
-    window.scrollTo(0,0);
-
-    // 调用 EmailJS
-    emailjs.send(
-      'service_44viaar',
-      'template_a4diuqb',
-      { message_html: contentHtml }
-    )
-    .then(res => {
-        form.reset();
-    })
-    .catch(err => {
-        alert('发送出错！请联系管理员');
-        console.error(err);
-    });
-});
 </script>
-
 </body>
 </html>
