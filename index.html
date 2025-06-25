@@ -100,15 +100,28 @@
         .hidden {
             display: none;
         }
+        #success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h1>产品包装需求及成本估算表</h1>
+    <div id="success-message">提交成功！我们会尽快与您联系。</div>
 
-    <form id="packagingForm">
+    <form id="packagingForm" action="https://formspree.io/f/meokpalq" method="POST">
         <!-- 基础信息 -->
         <div class="form-section">
             <h2>1. 基础信息</h2>
+            
+            <input type="hidden" name="_replyto" value="yuanqq2@gmail.com">
+            <input type="hidden" name="_subject" value="新包装需求提交">
             
             <div class="flex-row">
                 <div>
@@ -147,34 +160,34 @@
             <label>包装盒类型</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="radio" name="box_type" value="top_bottom" checked> 天地盒
+                    <input type="radio" name="包装盒类型" value="天地盒" checked> 天地盒
                 </label>
                 <label class="checkbox-item">
-                    <input type="radio" name="box_type" value="airplane"> 飞机盒
+                    <input type="radio" name="包装盒类型" value="飞机盒"> 飞机盒
                 </label>
                 <label class="checkbox-item">
-                    <input type="radio" name="box_type" value="other"> 其他
-                    <input type="text" name="box_type_other" class="hidden" style="width:150px; margin-left:10px;">
+                    <input type="radio" name="包装盒类型" value="其他"> 其他
+                    <input type="text" name="其他盒型" class="hidden" style="width:150px; margin-left:10px;">
                 </label>
             </div>
             
             <label>盒体材质</label>
-            <select name="material" onchange="updateCostEstimate()">
+            <select name="盒体材质" onchange="updateCostEstimate()">
                 <option value="">-- 请选择 --</option>
-                <option value="white_card">白卡纸（250-350g）</option>
-                <option value="kraft">牛皮纸（双层）</option>
-                <option value="art_paper">铜版纸（覆膜）</option>
-                <option value="corrugated">瓦楞纸（B楞/E楞）</option>
-                <option value="special">特种纸（需定制）</option>
+                <option value="白卡纸（250-350g）">白卡纸（250-350g）</option>
+                <option value="牛皮纸（双层）">牛皮纸（双层）</option>
+                <option value="铜版纸（覆膜）">铜版纸（覆膜）</option>
+                <option value="瓦楞纸（B楞/E楞）">瓦楞纸（B楞/E楞）</option>
+                <option value="特种纸（需定制）">特种纸（需定制）</option>
             </select>
             
             <label>是否需要热缩膜？</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="radio" name="shrink_film" value="yes" onchange="updateCostEstimate()"> 需要
+                    <input type="radio" name="热缩膜" value="需要" onchange="updateCostEstimate()"> 需要
                 </label>
                 <label class="checkbox-item">
-                    <input type="radio" name="shrink_film" value="no" checked onchange="updateCostEstimate()"> 不需要
+                    <input type="radio" name="热缩膜" value="不需要" checked onchange="updateCostEstimate()"> 不需要
                 </label>
             </div>
         </div>
@@ -186,50 +199,50 @@
             <label>是否需要PE袋？</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="radio" name="pe_bag" value="yes" onchange="updateCostEstimate()"> 需要
+                    <input type="radio" name="PE袋" value="需要" onchange="updateCostEstimate()"> 需要
                     <span style="margin-left:10px;">厚度：
-                        <select name="pe_thickness" style="width:90px; display:inline-block;" onchange="updateCostEstimate()">
-                            <option value="0.03">0.03mm</option>
-                            <option value="0.05" selected>0.05mm</option>
-                            <option value="0.08">0.08mm</option>
+                        <select name="PE袋厚度" style="width:90px; display:inline-block;" onchange="updateCostEstimate()">
+                            <option value="0.03mm">0.03mm</option>
+                            <option value="0.05mm" selected>0.05mm</option>
+                            <option value="0.08mm">0.08mm</option>
                         </select>
                     </span>
                 </label>
                 <label class="checkbox-item">
-                    <input type="radio" name="pe_bag" value="no" checked onchange="updateCostEstimate()"> 不需要
+                    <input type="radio" name="PE袋" value="不需要" checked onchange="updateCostEstimate()"> 不需要
                 </label>
             </div>
             
             <label>缓冲材料</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="checkbox" name="buffer_pearl" onchange="updateCostEstimate()"> 珍珠棉
-                    <select name="pearl_density" style="width:90px; margin-left:5px;" onchange="updateCostEstimate()">
-                        <option value="25kg">25kg/m³</option>
-                        <option value="30kg" selected>30kg/m³</option>
-                        <option value="35kg">35kg/m³</option>
+                    <input type="checkbox" name="缓冲材料[]" value="珍珠棉" onchange="updateCostEstimate()"> 珍珠棉
+                    <select name="珍珠棉密度" style="width:90px; margin-left:5px;" onchange="updateCostEstimate()">
+                        <option value="25kg/m³">25kg/m³</option>
+                        <option value="30kg/m³" selected>30kg/m³</option>
+                        <option value="35kg/m³">35kg/m³</option>
                     </select>
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="buffer_epe" onchange="updateCostEstimate()"> EPE泡沫
+                    <input type="checkbox" name="缓冲材料[]" value="EPE泡沫" onchange="updateCostEstimate()"> EPE泡沫
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="buffer_paper" onchange="updateCostEstimate()"> 纸托
+                    <input type="checkbox" name="缓冲材料[]" value="纸托" onchange="updateCostEstimate()"> 纸托
                 </label>
             </div>
             
             <label>是否需要产品收纳袋？</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="radio" name="storage_bag" value="yes" onchange="updateCostEstimate()"> 需要（
-                    <select name="bag_material" style="width:110px; display:inline-block;" onchange="updateCostEstimate()">
-                        <option value="opp">OPP袋</option>
-                        <option value="cotton">无纺布</option>
-                        <option value="velvet">绒布</option>
+                    <input type="radio" name="产品收纳袋" value="需要" onchange="updateCostEstimate()"> 需要（
+                    <select name="收纳袋材质" style="width:110px; display:inline-block;" onchange="updateCostEstimate()">
+                        <option value="OPP袋">OPP袋</option>
+                        <option value="无纺布">无纺布</option>
+                        <option value="绒布">绒布</option>
                     </select>）
                 </label>
                 <label class="checkbox-item">
-                    <input type="radio" name="storage_bag" value="no" checked onchange="updateCostEstimate()"> 不需要
+                    <input type="radio" name="产品收纳袋" value="不需要" checked onchange="updateCostEstimate()"> 不需要
                 </label>
             </div>
         </div>
@@ -239,18 +252,18 @@
             <h2>4. 配件包装</h2>
             
             <label>配件清单（名称×数量）</label>
-            <textarea name="accessories" rows="3" placeholder="例：充电线×1、说明书×1、保修卡×1"></textarea>
+            <textarea name="配件清单" rows="3" placeholder="例：充电线×1、说明书×1、保修卡×1"></textarea>
             
             <label>配件独立包装方式</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="checkbox" name="acc_pe_bag" onchange="updateCostEstimate()"> PE袋
+                    <input type="checkbox" name="包装方式[]" value="PE袋" onchange="updateCostEstimate()"> PE袋
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="acc_paper_box" onchange="updateCostEstimate()"> 纸卡盒
+                    <input type="checkbox" name="包装方式[]" value="纸卡盒" onchange="updateCostEstimate()"> 纸卡盒
                 </label>
                 <label class="checkbox-item">
-                    <input type="checkbox" name="acc_blister" onchange="updateCostEstimate()"> 吸塑壳
+                    <input type="checkbox" name="包装方式[]" value="吸塑壳" onchange="updateCostEstimate()"> 吸塑壳
                 </label>
             </div>
         </div>
@@ -265,14 +278,17 @@
                 <div>总成本估算（按生产数量）：<span id="total_cost" style="font-weight:bold;">¥0.00</span></div>
             </div>
             
+            <input type="hidden" id="calculated_cost" name="预估单件成本">
+            <input type="hidden" id="total_calculated_cost" name="预估总成本">
+            
             <label>您的目标成本（单件）</label>
-            <input type="number" name="target_cost" placeholder="输入您的目标价格（元）" step="0.1" min="0">
+            <input type="number" name="目标成本" placeholder="输入您的目标价格（元）" step="0.1" min="0">
         </div>
 
         <!-- 其他要求 -->
         <div class="form-section">
             <h2>6. 其他要求</h2>
-            <textarea name="other_requirements" rows="4" placeholder="特殊印刷工艺/环保认证/开模需求等"></textarea>
+            <textarea name="其他要求" rows="4" placeholder="特殊印刷工艺/环保认证/开模需求等"></textarea>
         </div>
 
         <button type="submit" class="submit-btn">提交包装需求</button>
@@ -280,54 +296,54 @@
 
     <script>
         // 显示/隐藏其他盒型输入框
-        document.querySelector('input[name="box_type"][value="other"]').addEventListener('change', function() {
-            document.querySelector('input[name="box_type_other"]').classList.toggle('hidden', !this.checked);
+        document.querySelector('input[name="包装盒类型"][value="其他"]').addEventListener('change', function() {
+            document.querySelector('input[name="其他盒型"]').classList.toggle('hidden', !this.checked);
         });
 
         // 成本估算逻辑
         function updateCostEstimate() {
             // 基础成本参数（单位：元）
             const COST_BASE = {
-                top_bottom: 1.5,
-                airplane: 0.8,
-                other: 2.0,
+                "天地盒": 1.5,
+                "飞机盒": 0.8,
+                "其他": 2.0,
                 materials: {
-                    white_card: 0.6,
-                    kraft: 0.5,
-                    art_paper: 0.8,
-                    corrugated: 0.4,
-                    special: 1.5
+                    "白卡纸（250-350g）": 0.6,
+                    "牛皮纸（双层）": 0.5,
+                    "铜版纸（覆膜）": 0.8,
+                    "瓦楞纸（B楞/E楞）": 0.4,
+                    "特种纸（需定制）": 1.5
                 },
-                shrink_film: 0.3,
-                pe_bag: {
-                    '0.03': 0.1,
-                    '0.05': 0.15,
-                    '0.08': 0.2
+                "热缩膜": 0.3,
+                "PE袋": {
+                    "0.03mm": 0.1,
+                    "0.05mm": 0.15,
+                    "0.08mm": 0.2
                 },
-                buffer: {
-                    pearl: {
-                        '25kg': 0.4,
-                        '30kg': 0.5,
-                        '35kg': 0.6
+                "缓冲材料": {
+                    "珍珠棉": {
+                        "25kg/m³": 0.4,
+                        "30kg/m³": 0.5,
+                        "35kg/m³": 0.6
                     },
-                    epe: 0.3,
-                    paper: 0.2
+                    "EPE泡沫": 0.3,
+                    "纸托": 0.2
                 },
-                storage_bag: {
-                    opp: 0.3,
-                    cotton: 0.8,
-                    velvet: 1.5
+                "产品收纳袋": {
+                    "OPP袋": 0.3,
+                    "无纺布": 0.8,
+                    "绒布": 1.5
                 },
-                accessories: {
-                    pe_bag: 0.1,
-                    paper_box: 0.5,
-                    blister: 0.7
+                "配件包装": {
+                    "PE袋": 0.1,
+                    "纸卡盒": 0.5,
+                    "吸塑壳": 0.7
                 }
             };
 
             // 获取表单值（空值默认为0）
-            const boxType = document.querySelector('input[name="box_type"]:checked')?.value || "";
-            const material = document.querySelector('select[name="material"]').value || "";
+            const boxType = document.querySelector('input[name="包装盒类型"]:checked')?.value || "";
+            const material = document.querySelector('select[name="盒体材质"]').value || "";
             const quantity = parseInt(document.getElementById('quantity').value) || 0;
             
             // 计算基础成本
@@ -337,38 +353,42 @@
             }
 
             // 添加外包装成本
-            if (document.querySelector('input[name="shrink_film"]:checked')?.value === 'yes') {
-                cost += COST_BASE.shrink_film;
+            if (document.querySelector('input[name="热缩膜"]:checked')?.value === '需要') {
+                cost += COST_BASE["热缩膜"];
             }
 
             // 添加内包装成本
-            if (document.querySelector('input[name="pe_bag"]:checked')?.value === 'yes') {
-                const thickness = document.querySelector('select[name="pe_thickness"]').value;
-                cost += COST_BASE.pe_bag[thickness] || 0;
+            if (document.querySelector('input[name="PE袋"]:checked')?.value === '需要') {
+                const thickness = document.querySelector('select[name="PE袋厚度"]').value;
+                cost += COST_BASE["PE袋"][thickness] || 0;
             }
 
             // 缓冲材料
-            if (document.querySelector('input[name="buffer_pearl"]')?.checked) {
-                const density = document.querySelector('select[name="pearl_density"]').value;
-                cost += COST_BASE.buffer.pearl[density] || 0;
+            if (document.querySelector('input[name="缓冲材料[]"][value="珍珠棉"]')?.checked) {
+                const density = document.querySelector('select[name="珍珠棉密度"]').value;
+                cost += COST_BASE["缓冲材料"]["珍珠棉"][density] || 0;
             }
-            if (document.querySelector('input[name="buffer_epe"]')?.checked) cost += COST_BASE.buffer.epe || 0;
-            if (document.querySelector('input[name="buffer_paper"]')?.checked) cost += COST_BASE.buffer.paper || 0;
+            if (document.querySelector('input[name="缓冲材料[]"][value="EPE泡沫"]')?.checked) cost += COST_BASE["缓冲材料"]["EPE泡沫"] || 0;
+            if (document.querySelector('input[name="缓冲材料[]"][value="纸托"]')?.checked) cost += COST_BASE["缓冲材料"]["纸托"] || 0;
 
             // 收纳袋
-            if (document.querySelector('input[name="storage_bag"]:checked')?.value === 'yes') {
-                const bagMaterial = document.querySelector('select[name="bag_material"]').value;
-                cost += COST_BASE.storage_bag[bagMaterial] || 0;
+            if (document.querySelector('input[name="产品收纳袋"]:checked')?.value === '需要') {
+                const bagMaterial = document.querySelector('select[name="收纳袋材质"]').value;
+                cost += COST_BASE["产品收纳袋"][bagMaterial] || 0;
             }
 
             // 配件包装
-            if (document.querySelector('input[name="acc_pe_bag"]')?.checked) cost += COST_BASE.accessories.pe_bag || 0;
-            if (document.querySelector('input[name="acc_paper_box"]')?.checked) cost += COST_BASE.accessories.paper_box || 0;
-            if (document.querySelector('input[name="acc_blister"]')?.checked) cost += COST_BASE.accessories.blister || 0;
+            if (document.querySelector('input[name="包装方式[]"][value="PE袋"]')?.checked) cost += COST_BASE["配件包装"]["PE袋"] || 0;
+            if (document.querySelector('input[name="包装方式[]"][value="纸卡盒"]')?.checked) cost += COST_BASE["配件包装"]["纸卡盒"] || 0;
+            if (document.querySelector('input[name="包装方式[]"][value="吸塑壳"]')?.checked) cost += COST_BASE["配件包装"]["吸塑壳"] || 0;
 
             // 显示结果
             document.getElementById('unit_cost').textContent = `¥${cost.toFixed(2)}`;
             document.getElementById('total_cost').textContent = `¥${(cost * (quantity || 0)).toFixed(2)}`;
+            
+            // 设置隐藏字段值
+            document.getElementById('calculated_cost').value = cost.toFixed(2);
+            document.getElementById('total_calculated_cost').value = (cost * (quantity || 0)).toFixed(2);
         }
 
         // 初始化所有事件监听
@@ -377,15 +397,33 @@
         });
         document.getElementById('quantity').addEventListener('input', updateCostEstimate);
 
-        // 表单提交（允许空值）
+        // 表单提交
         document.getElementById('packagingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // 获取产品型号
-            const productModel = document.getElementById('product_model').value || '未填写';
+            const form = e.target;
+            const formData = new FormData(form);
             
-            alert(`【${document.getElementById('product_name').value || '未命名产品'} ${productModel}】包装需求已提交！`);
-            // 此处可添加实际表单提交逻辑
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('success-message').style.display = 'block';
+                    form.reset();
+                    window.scrollTo(0, 0);
+                } else {
+                    throw new Error('提交失败');
+                }
+            })
+            .catch(error => {
+                alert('提交出错，请稍后重试或直接联系：yuanqq2@gmail.com');
+                console.error(error);
+            });
         });
 
         // 初始计算
