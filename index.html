@@ -113,11 +113,11 @@
             <div class="flex-row">
                 <div>
                     <label for="brand_name">品牌名称</label>
-                    <input type="text" id="brand_name" name="brand_name" required placeholder="例：XX品牌">
+                    <input type="text" id="brand_name" name="brand_name" placeholder="例：XX品牌">
                 </div>
                 <div>
                     <label for="product_name">产品名称</label>
-                    <input type="text" id="product_name" name="product_name" required placeholder="例：智能手表">
+                    <input type="text" id="product_name" name="product_name" placeholder="例：智能手表">
                 </div>
             </div>
 
@@ -128,15 +128,15 @@
                 </div>
                 <div>
                     <label for="quantity">预计生产数量</label>
-                    <input type="number" id="quantity" name="quantity" placeholder="例：5000" required min="100">
+                    <input type="number" id="quantity" name="quantity" placeholder="例：5000" min="0">
                 </div>
             </div>
             
             <label for="product_size">产品尺寸 (长×宽×高 mm)</label>
             <div class="flex-row">
-                <input type="number" id="length" name="length" placeholder="长" required min="1">
-                <input type="number" id="width" name="width" placeholder="宽" required min="1">
-                <input type="number" id="height" name="height" placeholder="高" required min="1">
+                <input type="number" id="length" name="length" placeholder="长" min="0">
+                <input type="number" id="width" name="width" placeholder="宽" min="0">
+                <input type="number" id="height" name="height" placeholder="高" min="0">
             </div>
         </div>
 
@@ -147,7 +147,7 @@
             <label>包装盒类型</label>
             <div class="checkbox-group">
                 <label class="checkbox-item">
-                    <input type="radio" name="box_type" value="top_bottom" required checked> 天地盒
+                    <input type="radio" name="box_type" value="top_bottom" checked> 天地盒
                 </label>
                 <label class="checkbox-item">
                     <input type="radio" name="box_type" value="airplane"> 飞机盒
@@ -159,7 +159,7 @@
             </div>
             
             <label>盒体材质</label>
-            <select name="material" required onchange="updateCostEstimate()">
+            <select name="material" onchange="updateCostEstimate()">
                 <option value="">-- 请选择 --</option>
                 <option value="white_card">白卡纸（250-350g）</option>
                 <option value="kraft">牛皮纸（双层）</option>
@@ -325,10 +325,10 @@
                 }
             };
 
-            // 获取表单值
-            const boxType = document.querySelector('input[name="box_type"]:checked').value;
-            const material = document.querySelector('select[name="material"]').value;
-            const quantity = parseInt(document.getElementById('quantity').value) || 1000;
+            // 获取表单值（空值默认为0）
+            const boxType = document.querySelector('input[name="box_type"]:checked')?.value || "";
+            const material = document.querySelector('select[name="material"]').value || "";
+            const quantity = parseInt(document.getElementById('quantity').value) || 0;
             
             // 计算基础成本
             let cost = COST_BASE[boxType] || 0;
@@ -337,38 +337,38 @@
             }
 
             // 添加外包装成本
-            if (document.querySelector('input[name="shrink_film"]:checked').value === 'yes') {
+            if (document.querySelector('input[name="shrink_film"]:checked')?.value === 'yes') {
                 cost += COST_BASE.shrink_film;
             }
 
             // 添加内包装成本
-            if (document.querySelector('input[name="pe_bag"]:checked').value === 'yes') {
+            if (document.querySelector('input[name="pe_bag"]:checked')?.value === 'yes') {
                 const thickness = document.querySelector('select[name="pe_thickness"]').value;
-                cost += COST_BASE.pe_bag[thickness];
+                cost += COST_BASE.pe_bag[thickness] || 0;
             }
 
             // 缓冲材料
-            if (document.querySelector('input[name="buffer_pearl"]').checked) {
+            if (document.querySelector('input[name="buffer_pearl"]')?.checked) {
                 const density = document.querySelector('select[name="pearl_density"]').value;
-                cost += COST_BASE.buffer.pearl[density];
+                cost += COST_BASE.buffer.pearl[density] || 0;
             }
-            if (document.querySelector('input[name="buffer_epe"]').checked) cost += COST_BASE.buffer.epe;
-            if (document.querySelector('input[name="buffer_paper"]').checked) cost += COST_BASE.buffer.paper;
+            if (document.querySelector('input[name="buffer_epe"]')?.checked) cost += COST_BASE.buffer.epe || 0;
+            if (document.querySelector('input[name="buffer_paper"]')?.checked) cost += COST_BASE.buffer.paper || 0;
 
             // 收纳袋
-            if (document.querySelector('input[name="storage_bag"]:checked').value === 'yes') {
+            if (document.querySelector('input[name="storage_bag"]:checked')?.value === 'yes') {
                 const bagMaterial = document.querySelector('select[name="bag_material"]').value;
-                cost += COST_BASE.storage_bag[bagMaterial];
+                cost += COST_BASE.storage_bag[bagMaterial] || 0;
             }
 
             // 配件包装
-            if (document.querySelector('input[name="acc_pe_bag"]').checked) cost += COST_BASE.accessories.pe_bag;
-            if (document.querySelector('input[name="acc_paper_box"]').checked) cost += COST_BASE.accessories.paper_box;
-            if (document.querySelector('input[name="acc_blister"]').checked) cost += COST_BASE.accessories.blister;
+            if (document.querySelector('input[name="acc_pe_bag"]')?.checked) cost += COST_BASE.accessories.pe_bag || 0;
+            if (document.querySelector('input[name="acc_paper_box"]')?.checked) cost += COST_BASE.accessories.paper_box || 0;
+            if (document.querySelector('input[name="acc_blister"]')?.checked) cost += COST_BASE.accessories.blister || 0;
 
             // 显示结果
             document.getElementById('unit_cost').textContent = `¥${cost.toFixed(2)}`;
-            document.getElementById('total_cost').textContent = `¥${(cost * quantity).toFixed(2)}`;
+            document.getElementById('total_cost').textContent = `¥${(cost * (quantity || 0)).toFixed(2)}`;
         }
 
         // 初始化所有事件监听
@@ -377,14 +377,14 @@
         });
         document.getElementById('quantity').addEventListener('input', updateCostEstimate);
 
-        // 表单提交
+        // 表单提交（允许空值）
         document.getElementById('packagingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // 获取产品型号
             const productModel = document.getElementById('product_model').value || '未填写';
             
-            alert(`【${document.getElementById('product_name').value} ${productModel}】包装需求已提交！`);
+            alert(`【${document.getElementById('product_name').value || '未命名产品'} ${productModel}】包装需求已提交！`);
             // 此处可添加实际表单提交逻辑
         });
 
