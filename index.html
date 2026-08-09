@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中项知识默写练习</title>
+<style>
+:root{--ink:#1f304d;--muted:#7d8aa3;--accent:#3f66c5;--accent-dark:#3157b6;--accent-soft:#eef3ff;--ok:#17764d;--bad:#b42318;--line:#d8e2f0;--bg:#f5f8fc}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif}.shell{max-width:1660px;margin:auto;padding:24px 26px 62px}header{position:relative;min-height:216px;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:30px 34px;margin-bottom:24px;background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:0 18px 45px #27477912;overflow:hidden}header:after{content:"";position:absolute;width:245px;height:245px;right:-22px;top:-80px;border-radius:50%;background:linear-gradient(145deg,#eef3fb,#f9fbfe);z-index:0}header>div{position:relative;z-index:1}.eyebrow{display:flex;align-items:center;gap:13px;color:var(--accent);font-size:20px;font-weight:800;letter-spacing:.12em}.eyebrow:before{content:"中";display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:var(--accent);color:#fff;font-size:23px;letter-spacing:0;box-shadow:0 10px 22px #3157b640}h1{margin:14px 0 4px;color:#1c2d49;font-size:clamp(42px,4vw,58px);line-height:1.08;font-weight:900;letter-spacing:-.04em}.sub{margin:0;color:var(--muted);font-size:20px}.score{min-width:300px;padding:24px 22px 20px;text-align:left;background:#f8faff;border:1px solid #d8e3f4;border-radius:24px}.score strong{display:block;color:var(--accent);font-size:46px;line-height:1;font-weight:800}.score span{display:block;margin-top:13px;color:var(--muted);font-size:18px}.bar{height:8px;margin-top:14px;background:#e5ebf3;border-radius:99px;overflow:hidden}.bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#3e67c8,#63a49f);transition:.3s}.toolbar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 34px #2747790d}button,select,input{font:inherit}button,select{height:60px;padding:0 22px;border:1px solid #d4deed;border-radius:13px;background:#fff;color:var(--ink);font-size:20px;font-weight:700;cursor:pointer;transition:.18s}button:hover,select:hover{border-color:#9fb4df;background:#f8faff}button.primary{border-color:var(--accent);background:linear-gradient(135deg,#466ed0,#315bbb);color:#fff;box-shadow:0 9px 18px #3157b62b}button.ghost.active{border-color:#9eb4e4;background:var(--accent-soft);color:var(--accent-dark)}.search{flex:1;min-width:300px;height:60px;padding:0 20px;border:1px solid #d4deed;border-radius:13px;background:#fff;color:var(--ink);font-size:20px;outline:none}.search:focus,.jump input:focus{border-color:#7d99db;box-shadow:0 0 0 4px #456bc51a}.jump{display:flex;gap:10px}.jump input{width:128px;height:60px;padding:0 15px;border:1px solid #d4deed;border-radius:13px;background:#fff;color:var(--ink);font-size:20px;outline:none}.jump input.invalid{border-color:var(--bad);box-shadow:0 0 0 4px #b4231815}.card{position:relative;min-height:760px;padding:62px 62px 58px;margin-bottom:22px;background:#fff;border:1px solid var(--line);border-radius:29px;box-shadow:0 22px 48px #27477912;overflow:hidden}.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,#3e67ce,#73aa9a)}.meta{display:flex;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #e1e7f0;color:#7d8aa0;font-size:19px;font-weight:700}.q{margin:38px 0 28px;color:#1e304e;font-size:clamp(32px,3vw,46px);line-height:1.35;font-weight:900;letter-spacing:-.035em}.hint{display:none;margin-bottom:20px;padding:15px 18px;border-left:5px solid #e7ae43;border-radius:10px;background:#fff6df;font-size:18px}.hint.show{display:block}.hint b{color:#886000}.answer{width:100%;min-height:315px;padding:28px;resize:vertical;border:2px solid #cfdbea;border-radius:19px;background:#fff;color:var(--ink);font:20px/1.8 inherit;outline:none}.answer::placeholder{color:#a7b2c5}.answer:focus{border-color:#7796dc;box-shadow:0 0 0 4px #456bc51a}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;padding-bottom:19px;border-bottom:1px dashed #dce4ef}.result{display:none;margin-top:20px;padding:17px 20px;border-radius:13px;font-size:18px;line-height:1.7}.result.show{display:block}.result.ok{background:#eaf7ef;color:var(--ok)}.result.bad{background:#fff0ed;color:var(--bad)}.standard{display:none;margin-top:18px;padding:22px;border:1px solid #d9e3f1;border-radius:14px;background:#f7f9fd;white-space:pre-wrap;font-size:18px;line-height:1.85}.standard.show{display:block}.kbd{margin-top:17px;color:#8b98ae;font-size:16px}.nav{display:flex;justify-content:space-between;margin-top:20px}.nav button{min-width:205px}.empty{text-align:center;color:var(--muted);padding:90px 20px}@media(max-width:900px){.shell{padding:14px}.score{min-width:235px}.toolbar{position:static}.card{min-height:auto;padding:34px 28px}.answer{min-height:250px}}@media(max-width:650px){header{min-height:auto;align-items:flex-start;flex-direction:column;padding:24px;border-radius:21px}header:after{display:none}.eyebrow{font-size:14px}.eyebrow:before{width:36px;height:36px;font-size:18px}h1{font-size:38px}.sub{font-size:16px}.score{width:100%;min-width:0}.toolbar{padding:11px;gap:8px}.search{min-width:100%;height:52px}.jump{flex:1}.jump input{width:100%;height:52px}button,select{height:52px;padding:0 14px;font-size:16px}.card{padding:28px 20px 34px;border-radius:21px}.meta{font-size:14px}.q{margin:28px 0 20px;font-size:28px}.answer{min-height:235px;padding:18px;font-size:17px}.nav button{min-width:0}}
+@media (min-width:901px) and (max-width:1600px){.shell{padding:18px 20px 48px}header{min-height:170px;padding:24px 28px;border-radius:24px}.eyebrow{font-size:17px}.eyebrow:before{width:39px;height:39px;font-size:20px}h1{margin-top:10px;font-size:clamp(40px,3.4vw,50px)}.sub{font-size:17px}.score{min-width:250px;padding:20px}.score strong{font-size:40px}.score span{font-size:16px}.toolbar{padding:12px;gap:9px;border-radius:18px}button,select{height:52px;padding:0 17px;font-size:17px}.search{height:52px;font-size:17px}.jump input{width:108px;height:52px;font-size:17px}.card{min-height:auto;padding:42px 44px 40px;border-radius:24px}.meta{padding-bottom:16px;font-size:16px}.q{margin:28px 0 22px;font-size:clamp(30px,2.7vw,40px)}.answer{min-height:clamp(220px,29vh,285px);padding:22px;font-size:18px}.actions{margin-top:20px}.kbd{font-size:14px}.nav button{min-width:170px}}@media (min-width:901px) and (max-width:1220px){.toolbar .search{flex-basis:100%}.toolbar{align-items:center}.card{padding:36px 34px}.score{min-width:225px}}@media (min-width:901px) and (max-height:850px){header{min-height:145px;padding-top:18px;padding-bottom:18px;margin-bottom:16px}h1{font-size:40px}.eyebrow:before{width:36px;height:36px}.score{padding:16px 18px}.score strong{font-size:36px}.score span{margin-top:8px}.bar{margin-top:8px}.toolbar{margin-bottom:16px}.card{padding-top:30px;padding-bottom:30px}.q{margin:22px 0 17px}.answer{min-height:200px;height:26vh}.actions{margin-top:16px}.nav{margin-top:14px}}@media (max-width:900px){.toolbar .search{flex-basis:100%}.toolbar select{flex:1}.toolbar .jump{flex:2}.toolbar #shuffle,.toolbar #star{flex:1}.score strong{font-size:38px}}@media (max-width:520px){.shell{padding:9px}.toolbar .jump{min-width:100%}.toolbar #shuffle,.toolbar #star{min-width:calc(50% - 5px)}.actions button{flex:1;min-width:calc(50% - 7px)}.nav{gap:10px}.nav button{flex:1}.answer{min-height:210px}}
+@media (min-width:1221px){.shell{width:min(82vw,1580px);max-width:none;padding-left:0;padding-right:0}header{min-height:clamp(165px,10vw,190px);padding:24px 30px;margin-bottom:22px}.eyebrow{font-size:18px}.eyebrow:before{width:40px;height:40px;font-size:21px}h1{margin:11px 0 3px;font-size:clamp(42px,2.7vw,52px)}.sub{font-size:18px}.score{min-width:270px;padding:19px 21px}.score strong{font-size:42px}.score span{margin-top:10px;font-size:16px}.bar{margin-top:10px}.toolbar{padding:13px;gap:10px;margin-bottom:22px}.toolbar button,.toolbar select{height:54px;padding:0 18px;font-size:18px}.toolbar .search{height:54px;font-size:18px}.toolbar .jump input{width:112px;height:54px;font-size:18px}.card{min-height:auto;padding:46px 50px 42px}.meta{padding-bottom:17px;font-size:17px}.q{margin:30px 0 23px;font-size:clamp(34px,2.25vw,42px)}.answer{min-height:clamp(235px,27vh,300px);padding:24px;font-size:18px}.actions{margin-top:21px}.actions button{height:54px;font-size:18px}.kbd{font-size:14px}.nav button{height:55px;min-width:180px;font-size:18px}}
+/* Match the reference file's compact adaptive sizing; visual theme stays unchanged. */
+@media (min-width:761px){.shell{width:auto;max-width:1120px;padding:24px 24px 64px}header{min-height:0;align-items:center;margin-bottom:16px;padding:20px 22px;border-radius:20px}.eyebrow{font-size:12px;gap:7px}.eyebrow:before{width:28px;height:28px;border-radius:9px;font-size:13px}h1{margin:8px 0 6px;font-size:clamp(28px,4vw,40px)}.sub{font-size:14px}.score{width:auto;min-width:200px;padding:12px 14px;border-radius:14px}.score strong{font-size:27px}.score span{margin-top:0;font-size:12px}.bar{height:5px;margin-top:9px}.toolbar{top:10px;align-items:center;margin-bottom:16px;padding:10px;gap:9px;border-radius:15px}.toolbar .search{flex:1 1 180px;min-width:180px;height:40px;padding:9px 13px;font-size:16px}.toolbar select,.toolbar button{flex:0 0 auto;height:auto;min-height:40px;padding:9px 12px;border-radius:9px;font-size:16px}.toolbar .jump{flex:0 0 auto;gap:6px}.toolbar .jump input{width:86px;height:40px;padding:9px 10px;border-radius:9px;font-size:16px}.card{min-height:0;padding:clamp(24px,4vw,42px);border-radius:20px}.card:before{width:5px}.meta{padding-bottom:13px;font-size:13px}.q{margin:24px 0 17px;font-size:clamp(22px,3vw,30px)}.answer{height:auto;min-height:210px;padding:17px 18px;border-radius:14px;font-size:16px}.actions{margin-top:14px;padding-bottom:19px;gap:9px}.actions button{height:auto;min-height:40px;padding:9px 14px;font-size:16px}.kbd{margin-top:12px;padding-top:11px;font-size:12px}.nav{gap:12px;margin-top:14px}.nav button{height:auto;min-width:138px;min-height:40px;padding:9px 12px;font-size:16px}}
+@media (max-width:760px){.shell{width:auto;max-width:1120px;padding:14px 0 44px}.shell>header,.shell>.card,.nav{margin-left:12px;margin-right:12px}header{min-height:0;align-items:stretch;padding:18px;margin-bottom:16px;flex-direction:column;border-radius:20px}.eyebrow{font-size:12px}.eyebrow:before{width:28px;height:28px;font-size:13px}h1{font-size:clamp(28px,9vw,40px)}.sub{font-size:14px}.score{width:100%;min-width:0;padding:12px 14px}.score strong{font-size:27px}.score span{font-size:12px}.toolbar{position:relative;top:0;margin:0 12px 14px;padding:10px;border-radius:14px}.toolbar .search{flex-basis:100%;width:100%;min-width:100%;height:40px;font-size:16px}.toolbar select{flex:1;height:auto;min-height:40px;font-size:16px}.toolbar .jump{flex:1;min-width:0}.toolbar .jump input{width:100%;height:40px;font-size:16px}.toolbar button{height:auto;min-height:40px;font-size:16px}.card{min-height:0;padding:22px 18px 25px;border-radius:20px}.card:before{width:5px}.meta{font-size:13px}.q{margin:24px 0 17px;font-size:clamp(22px,7vw,30px)}.answer{height:auto;min-height:230px;padding:17px 18px;font-size:16px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.actions button{width:100%;height:auto;min-height:40px;font-size:16px}.actions #check,.actions #clear{grid-column:1/-1}.nav{gap:12px;margin-top:14px}.nav button{flex:1;min-width:0;height:auto;min-height:40px;font-size:16px}.kbd{font-size:12px;line-height:1.7}}
+</style>
+<style>
+/* Mobile UX refinement */
+button:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+.card.is-empty{min-height:260px}
+.card.is-empty .meta,.card.is-empty .hint,.card.is-empty .answer,.card.is-empty .actions,.card.is-empty .result,.card.is-empty .standard,.card.is-empty .kbd{display:none}
+.card.is-empty .q{display:grid;place-items:center;min-height:170px;margin:0;text-align:center;color:var(--muted);font-size:24px;font-weight:700}
+@media (max-width:760px){
+  body{background:#f4f7fb}
+  .shell{padding-top:max(8px,env(safe-area-inset-top));padding-bottom:84px}
+  .shell>header,.shell>.card{margin-left:8px;margin-right:8px}
+  header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:13px 14px;margin-bottom:8px;border-radius:16px}
+  header:after{display:block;width:110px;height:110px;right:-38px;top:-48px}
+  .eyebrow{gap:6px;font-size:10px;letter-spacing:.06em}
+  .eyebrow:before{width:24px;height:24px;border-radius:7px;font-size:12px}
+  h1{margin:5px 0 0;font-size:clamp(23px,7vw,30px);line-height:1.15}
+  .sub{display:none}
+  .score{width:94px;min-width:94px;padding:9px 10px;border-radius:11px}
+  .score strong{font-size:21px;line-height:1}
+  .score span{display:none}
+  .score .bar{height:4px;margin-top:7px}
+  .toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;gap:7px;margin:0 8px 8px;padding:8px;border-radius:13px;box-shadow:0 5px 16px #2747790b}
+  .toolbar .search{grid-column:1/-1;min-width:0;height:44px;padding:0 12px}
+  .toolbar select{grid-column:1;height:44px;min-width:0;width:100%;padding:0 9px}
+  .toolbar .jump{grid-column:2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;min-width:0;width:100%}
+  .toolbar .jump input{height:44px;min-width:0;width:100%;padding:0 8px}
+  .toolbar .jump button{height:44px;min-width:54px;padding:0 9px}
+  .toolbar #shuffle,.toolbar #star{height:44px;width:100%;padding:0 8px}
+  .card{padding:17px 14px 20px;margin-bottom:6px;border-radius:16px;box-shadow:0 8px 24px #2747790d}
+  .card:before{width:4px}
+  .meta{align-items:center;flex-direction:row;gap:8px;padding-bottom:9px;font-size:11px}
+  .meta span:first-child{flex:1}
+  .meta span:last-child{white-space:nowrap}
+  .q{margin:16px 0 13px;font-size:clamp(20px,6vw,25px);line-height:1.4;letter-spacing:-.02em}
+  .hint{margin-bottom:11px;padding:11px 12px;font-size:14px;line-height:1.6}
+  .answer{min-height:clamp(205px,36dvh,330px);padding:14px;border-width:1.5px;border-radius:12px;font-size:16px;line-height:1.7}
+  .actions{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px;margin-top:10px;padding-bottom:12px}
+  .actions button{min-height:44px;padding:7px 8px;font-size:14px}
+  .actions #check,.actions #clear{grid-column:1/-1}
+  .result,.standard{margin-top:12px;padding:13px;font-size:14px;line-height:1.65}
+  .kbd{margin-top:10px;padding-top:9px;font-size:10px;text-align:center}
+  .nav{position:fixed;left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:0;z-index:50;gap:8px;margin:0;padding:8px 8px max(8px,env(safe-area-inset-bottom));border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;background:#f5f8fcf2;box-shadow:0 -8px 24px #27477916;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:opacity .18s,transform .18s}
+  .nav button{min-height:46px;border-radius:11px;font-size:15px}
+  body:has(.answer:focus) .nav{opacity:0;pointer-events:none;transform:translateY(120%)}
+}
+@media (max-width:380px){
+  header{padding:11px 12px}.score{width:82px;min-width:82px;padding:8px}.score strong{font-size:18px}
+  .toolbar{grid-template-columns:1fr}.toolbar .search,.toolbar select,.toolbar .jump,.toolbar #shuffle,.toolbar #star{grid-column:1}
+  .toolbar #shuffle,.toolbar #star{width:100%}
+  .card{padding-left:12px;padding-right:12px}.actions button{font-size:13px}.kbd{display:none}
+}
+@media (max-height:520px) and (orientation:landscape){
+  .shell{padding-bottom:70px}header{display:none}.toolbar{grid-template-columns:2fr 1fr 1.4fr 1fr 1fr;margin-top:6px}
+  .toolbar .search,.toolbar select,.toolbar .jump,.toolbar #shuffle,.toolbar #star{grid-column:auto}
+  .card{padding-top:12px}.q{margin:10px 0;font-size:20px}.answer{height:34dvh;min-height:130px}
+}
+</style></head><body><main class="shell"><header><div><div class="eyebrow">MEMORY PRACTICE · 中项</div><h1>知识默写练习</h1><p class="sub">先回忆，再看助记；答案按关键知识点宽松验证。</p></div><div class="score"><strong id="scoreText">0 / 0</strong><span>已掌握 / 当前题库</span><div class="bar"><i id="progress"></i></div></div></header>
+<section class="toolbar"><input id="search" class="search" placeholder="搜索题目…"><select id="filter"><option value="all">全部题目</option><option value="wrong">只看错题</option><option value="star">只看收藏</option><option value="unseen">尚未练习</option></select><div class="jump"><input id="jumpNumber" type="number" min="1" placeholder="题号"><button id="jumpBtn">跳转</button></div><button id="shuffle">随机一题</button><button id="star" class="ghost">☆ 收藏</button></section>
+<section class="card" id="card"><div class="meta"><span id="counter"></span><span id="status"></span></div><div class="q" id="question"></div><div class="hint" id="hint"><b>助记：</b><span></span></div><textarea id="answer" class="answer" placeholder="在这里默写答案。分条输入更容易核对……"></textarea><div class="actions"><button id="check" class="primary">验证答案</button><button id="hintBtn">显示助记</button><button id="standardBtn">查看标准答案</button><button id="clear">清空</button></div><div id="result" class="result"></div><div id="standard" class="standard"></div><div class="kbd">快捷键：Ctrl + Enter 验证 · Alt + ←/→ 切题</div></section><div class="nav"><button id="prev">← 上一题</button><button id="next">下一题 →</button></div></main>
+<script>const ITEMS=[{"id": 1, "question": "49个过程根据十大管理来背", "hint": "整范进成质资沟风采干", "answer": "一、整合管理\n制定项目章程、制定项目管理计划、指导与管理项目工作、管理项目知识、监控项目工作、实\n施整体变更控制、结束项目或阶段\n二、范围管理\n规划范围管理、收集需求、定义范围、创建 WBS、确认范围、控制范围\n三、进度管理\n规划进度管理、定义活动、排列活动顺序、估算活动持续时间、制定进度计划、控制进度\n四、成本管理\n规划成本管理、估算成本、制定预算、控制成本\n五、质量管理\n规划质量管理、管理质量、控制质量\n六、资源管理\n规划资源管理、估算活动资源、获取资源、建设团队、管理团队、控制资源\n七、沟通管理\n规划沟通管理、管理沟通、监督沟通\n八、风险管理\n规划风险管理、识别风险、实施定性风险分析、实施定量风险分析、规划风险应对、实施风险\n应对、监督风险\n九、采购管理\n规划采购管理、实施采购、控制采购\n十、干系人管理\n识别干系人、规划干系人参与、管理干系人参与、监督干系人参与", "sourceMatch": 1.0, "sourceBlock": 1}, {"id": 2, "question": "十一、配置管理过程", "hint": "", "answer": "配置管理计划\n配置识别\n配置控制\n配置状态报告\n配置审计\n配置改进", "sourceMatch": 0.61, "sourceBlock": 15}, {"id": 3, "question": "十二、变更管理过程", "hint": "", "answer": "提出与接受变更申请\n变更初审\n变更方案论证\n变更控制委员会审批\n发出变更通知并组织实施\n变更的实施监控\n变更效果评估\n变更收尾", "sourceMatch": 0.6, "sourceBlock": 13}, {"id": 4, "question": "十三、立项管理过程", "hint": "", "answer": "立项申请\n初步可行性研究\n详细可行性研究\n评估与决策", "sourceMatch": 0.5, "sourceBlock": 11}, {"id": 5, "question": "PMO的类型", "hint": "支控指", "answer": "支持型\n指令型\n控制型", "sourceMatch": 1.0, "sourceBlock": 2}, {"id": 6, "question": "PMO的主要职能", "hint": "", "answer": "对PMO所辖全部项目的共享资源进行管理\n识别和制定项目管理方法，最佳实践和标准\n通过项目审计，监督项目对项目管理标准，政策，程序和模板的合规性\n制定和管理项目政策，程序，模板及其它共享的文件\n对跨项目的沟通进行协调", "sourceMatch": 0.92, "sourceBlock": 2}, {"id": 7, "question": "开发生命周期可分为", "hint": "预迭增混", "answer": "预测型\n迭代型\n增量型\n适应型（敏捷型）\n混合型", "sourceMatch": 1.0, "sourceBlock": 3}, {"id": 8, "question": "项目立项管理一般包括", "hint": "", "answer": "项目建议与立项申请\n项目可行性分析\n项目评估与决策", "sourceMatch": 1.0, "sourceBlock": 4}, {"id": 9, "question": "可行性研究的内容", "hint": "机经社运", "answer": "技术可行性分析\n经济可行性分析\n社会效益可行性分析\n运行环境可行性分析\n其它可行性分析", "sourceMatch": 1.0, "sourceBlock": 5}, {"id": 10, "question": "技术可行性分析一般应考虑的因素包括", "hint": "开人技物", "answer": "进行项目开发风险\n人力资源有效性\n技术能力可能性\n物资产品可用性", "sourceMatch": 1.0, "sourceBlock": 6}, {"id": 11, "question": "经济可行性分析具体包括", "hint": "支收投敏", "answer": "支出分析\n收益分析\n投资回报分析\n敏捷性分析", "sourceMatch": 1.0, "sourceBlock": 7}, {"id": 12, "question": "项目建议书的内容", "hint": "", "answer": "项目必要性\n项目的市场预测\n产品方案或服务的市场预测\n项目建议必要条件", "sourceMatch": 0.92, "sourceBlock": 4}, {"id": 13, "question": "项目评估的程序", "hint": "组调分编专定", "answer": "成立评估小组，进行分工，制定评估工作计划\n开展研究和调查\n分析和评估\n编制，讨论，修改评估报告\n召开专家论证会\n评估报告的定稿和发布", "sourceMatch": 1.0, "sourceBlock": 8}, {"id": 14, "question": "制定项目章程主要作用包括", "hint": "", "answer": "明确纸质目标和战略目标之间直接联系\n确立项目正式的地位\n展示组织对项目的承诺", "sourceMatch": 1.0, "sourceBlock": 9}, {"id": 15, "question": "项目章程内容", "hint": "目的目标需求要描述，风险度财务名单要审批，退出两个职权", "answer": "项目目的\n可测量项目目标及相关成功标准\n高层级需求，高层级描述，边界定义及主要可交付成果\n项目整体风险\n总体里程碑进度计划\n预先批准财务资源\n关键干系人名单\n项目审批要求\n项目退出标准\n委派项目经理及其职权和职责\n发起人或批准项目章程人员姓名和职权", "sourceMatch": 0.92, "sourceBlock": 9}, {"id": 16, "question": "问题日志的内容", "hint": "问分责期", "answer": "问题类型\n问题提出者或提出日期\n问题描述\n问题优先级\n问题由谁负责解决\n目标解决日期\n问题状态\n最终结局情况", "sourceMatch": 1.0, "sourceBlock": 10}, {"id": 17, "question": "项目管理计划的内容", "hint": "变配鸡生发财", "answer": "九大管理子计划（需求管理计划）\n三大基准（进度，成本，范围）\n变更管理计划\n配置管理计划\n绩效测量基准\n项目生命周期\n开发方法\n管理审查", "sourceMatch": 1.0, "sourceBlock": 11}, {"id": 18, "question": "知识管理过程通常包括", "hint": "管分", "answer": "知识获取与集成\n知识组织与储存\n知识分享\n知识转移与应用\n知识管理审计", "sourceMatch": 1.0, "sourceBlock": 12}, {"id": 19, "question": "变更流程", "hint": "提影通审实验分", "answer": "提出变更申请\n变更影响分析\n通知所有干系人\n变更审批\n变更实施\n变更验证与发布\n分发新文档", "sourceMatch": 1.0, "sourceBlock": 13}, {"id": 20, "question": "范围管理计划的内容", "hint": "制详审正", "answer": "制定项目范围说明书\n根据详细项目说明书创建WBS\n确定如何审批和维护范围基准\n正式验收已完成可交付成果", "sourceMatch": 1.0, "sourceBlock": 14}, {"id": 21, "question": "需求管理计划的主要内容包括", "hint": "跟跟处配置", "answer": "如何规划，跟踪和报告各需求活动\n配置管理活动\n需求优先级排序过程\n测量指标以及使用这些指标理由\n反映那些需求属性将列入跟踪矩阵", "sourceMatch": 1.0, "sourceBlock": 15}, {"id": 22, "question": "需求文件的类别一般包括", "hint": "业功非过", "answer": "1）业务需求\n2）干系人需求\n3）解决方案需求\n4）过度和就绪需求\n5）项目需求\n6）质量需求", "sourceMatch": 1.0, "sourceBlock": 16}, {"id": 23, "question": "需求跟踪矩阵的内容包括", "hint": "两个目标、成果、需求-设计-开发-测试", "answer": "业务需要、机会、目的和目标；\n项目目标\n项目范围和 WBS 可交付成果\n产品设计\n产品开发\n测试策略和测试场景\n高层级需求到详细需求\n【助记：两个目标、成果、需求-设计-开发-测试（软件开发过程）】", "sourceMatch": 1.0, "sourceBlock": 17}, {"id": 24, "question": "制订进度计划包括以下4个关键步骤", "hint": "排估确制", "answer": "1）定义项目里程碑,识别活动并排列活动顺序,以及估算活动持续时间，并确定活动的开始和完\n成日期；\n2）由分配至各个活动的项目人员审查其被分配的活动；\n3）项目人员确认开始和完成日期与资源日历和其他项目或任务没有冲突,从而确认计划日期的\n有效性;\n4）分析进度计划，确定是否存在逻辑关系冲突，以及在批准进度计划并将其作为基准之前是\n否需要资源平衡，并同步修订和维护项目进度模型，确保进度计划在整个项目期间一直切实可行。", "sourceMatch": 1.0, "sourceBlock": 18}, {"id": 25, "question": "资源优化技术包括资源平衡和资源平滑", "hint": "平衡平滑", "answer": "1、资源平衡:为了在资源需求与资源供给之间取得平衡，根据资源制约因素对开始日期和完成\n日期进行调整的一种技术。资源平衡往往导致关键路径改变。\n2、资源平滑:对进度模型中的活动进行调整，从而使项目资源需求不超过预定的资源限制的一\n种技术资源平滑不会改变项目的关键路径，完工日期也不会延迟。但资源平滑技术可能无法实\n现所有资源的优化。", "sourceMatch": 1.0, "sourceBlock": 19}, {"id": 26, "question": "进度压缩技术有哪些", "hint": "赶快", "answer": "1、赶工:通过增加资源，以最小的成本代价来压缩进度工期的一种技术。可能导致风险和/或\n成本的增加。\n2、快速跟进:快速跟进是一种进度压缩技术，将正常情况下按顺序进行的活动或阶段改为至少\n部分并行开展。可能造成返工和风险增加。增加质量风险，可能增加项目成本。", "sourceMatch": 1.0, "sourceBlock": 20}, {"id": 27, "question": "项目进度计划图形方式包括", "hint": "横网里里程", "answer": "横道图\n里程碑图\n项目进度网络图", "sourceMatch": 1.0, "sourceBlock": 21}, {"id": 28, "question": "成本基准", "hint": "分时总", "answer": "是经过批准的、按时间段分配的项目预算，不包括任何管理储备，只有通过正式的变\n更控制程序才能变更，用作与实际结果进行比较的依据，成本基准是不同进度活动经批准的预\n算的总和。", "sourceMatch": 1.0, "sourceBlock": 22}, {"id": 29, "question": "缩短活动的工期的方法有哪些", "hint": "赶快使减改为加", "answer": "1、赶工，投入更多的资源或增加工作时间，以缩短关键活动的工期;\n2、快速跟进，并行施工，以缩短关键路径的长度;\n3、使用高素质的资源或经验更丰富的人员;\n4、减少活动范围或降低活动要求，前提是需要用户同意;\n5、改进方法或技术，以提高生产效率;\n6、加强质量管理，及时发现问题，减少返工，从而缩短工期。\n【助记：赶快使减改为加】", "sourceMatch": 1.0, "sourceBlock": 23}, {"id": 30, "question": "质量成本", "hint": "一(预防)致(评估)不(内部故障)致(外部故障)", "answer": "一致性成本：预防成本（设备、培训、文件过程、完成时间）\n评估成本（检查、测试、破坏性试验损失）\n不一致成本：内部失败成本（报废、返工）\n外部失败成本（债务、失去业务、保修工作）", "sourceMatch": 1.0, "sourceBlock": 24}, {"id": 31, "question": "详细的项目范围说明书包括的内容", "hint": "产可验责", "answer": "1） 产品范围描述 2）可交付成果 3）验收标准 4）项目的除外责任\n【助记：产可验责】", "sourceMatch": 1.0, "sourceBlock": 25}, {"id": 32, "question": "分解活动的步骤", "hint": "工牌分配恰当", "answer": "识别和分析可交付成果及相关工作；\n确定 WBS 的结构和编排方法\n自上而下逐层细化分解；\n为 WBS 组成部分制定和分配标识编码；\n核实可交付成果分解的程度是否恰当；\n【助记：工牌分配恰当】", "sourceMatch": 1.0, "sourceBlock": 26}, {"id": 33, "question": "WBS 结构形式", "hint": "层提", "answer": "生命周期做为第二层；主要可交付物做为第二层。", "sourceMatch": 1.0, "sourceBlock": 27}, {"id": 34, "question": "在分解的过程中注意的8个事项", "hint": "面向成果、符合范围、支持计控、4-6层、管理分包、全体参与、并非不变", "answer": "1）WBS 必须是面向可交付成果的；\n2）WBS 必须符合项目的范围；\n3）WBS 的底层应该支持计划和控制；\n4）WBS 的元素必须有人负责，而且只由一个人负责；\n5）WBS 应控制在4~6 层。一个工作单元只能从属于某个上层单元，避免交叉从属。\n6）WBS 应包括项目管理工作，也要包括分包出去的工作。\n7）WBS 的编排需要所有（主要）项目干系人的参与。\n8）WBS 并非一成不变。\n【助记：面向成果、符合范围、支持计控、4-6 层、管理分包、全体参与、并非不变】", "sourceMatch": 1.0, "sourceBlock": 28}, {"id": 35, "question": "范围基准", "hint": "范说W字", "answer": "是经过批准的范围说明书、WBS 和相应的 WBS 字典", "sourceMatch": 1.0, "sourceBlock": 29}, {"id": 36, "question": "WBS 字典中的内容一般包括", "hint": "工标责资", "answer": "账户编码标识、工作描述、假设条件和制约因素、负责的组织、进度里程碑、相关的进度活动、\n所需资源、成本估算、质量要求、验收标准、技术参考文献和协议信息等", "sourceMatch": 1.0, "sourceBlock": 30}, {"id": 37, "question": "确认范围时需要检查的问题", "hint": "可确认里程碑，质量标准清晰表达，没有遗漏范围风险", "answer": "•可交付成果是否是确定的、可确认的；\n•每个可交付成果是否有明确的里程碑；\n•是否有明确的质量标准；\n•审核和承诺是否有清晰的表达；\n•项目范围是否覆盖了需要完成的产品或服务的所有活动，有没有遗漏或错误；\n•项目范围的风险是否太高。\n【总结助记：可确认里程碑，质量标准清晰表达，没有遗漏范围风险】", "sourceMatch": 1.0, "sourceBlock": 31}, {"id": 38, "question": "确认范围的一般步骤如下", "hint": "时间投入标准，两个会议", "answer": "（1） 确定需要进行范围确认的时间\n（2） 识别范围确认需要哪些投入\n（3） 确定范围正式被接受的标准和要素\n（4） 确定范围确认会议的组织步骤\n（5） 组织范围确认会议\n【总结助记：时间投入标准，两个会议】", "sourceMatch": 1.0, "sourceBlock": 32}, {"id": 39, "question": "确认范围过程与控制质量过程的不同", "hint": "控质前，确范后", "answer": "确认范围关注可交付成果的验收\n控制质量关注可交付成果的正确性及是否满足质量要求\n控制质量过程通常先于确认范围过程，但二者也可同时进行。", "sourceMatch": 1.0, "sourceBlock": 33}, {"id": 40, "question": "干系人关注点的不同", "hint": "项商管工", "answer": "•管理层主要关注项目范围：是指范围对项目的进度、资金和资源的影响，这些因素是否超过了组织\n承受范围，是否在投入产出上具有合理性。\n•客户主要关注产品范围：关心项目的可交付成果是否足够完成产品或服务。\n•项目管理人员主要关注项目制约因素：关心项目可交付成果是否足够和必须完成，时间、资金和资\n源是否足够，主要的潜在风险和预备解决的方法。\n•项目团队成员主要关注项目范围中自己参与的元素和负责的元素。自己的工作时间是否足够，是否\n有多项工作，是否有冲突等。", "sourceMatch": 1.0, "sourceBlock": 34}, {"id": 41, "question": "范围蔓延", "hint": "未管就变", "answer": "未经控制的产品或项目范围的扩大（未对时间、成本和资源做相应调整）", "sourceMatch": 1.0, "sourceBlock": 35}, {"id": 42, "question": "质量管理计划的内容一般包括", "hint": "标准目标，角色审查活动，工具程序", "answer": "项目采用的质量标准；\n项目的质量目标；\n质量角色与职责；\n需要质量审查的项目可交付成果和过程；\n为项目规划的质量控制和质量管理活动；\n项目使用的质量工具；\n与项目有关的主要程序\n【总结助记：标准目标，角色审查活动，工具程序】", "sourceMatch": 1.0, "sourceBlock": 36}, {"id": 43, "question": "质量测量指标的例子包括", "hint": "准准失安", "answer": "按时完成的任务的百分比\n以 CPI测量的成本绩效\n故障率、识别的日缺陷数量\n每月总停机时间\n每个代码行的错误\n客户满意度分数\n以及测试计划所涵盖的需求的百分比", "sourceMatch": 1.0, "sourceBlock": 37}, {"id": 44, "question": "管理质量过程的作用", "hint": "提信，防缺", "answer": "1）通过执行有关产品特定方面的设计准则，设计出最优的，成熟的产品。\n2）建立信心，相信通过质量保证工具和技术可以使输出在完工时满足特定的需求和期望。\n3）确保使用质量过程并确保其使用能够满足项目的质量目标。\n4）提高过程和活动的效率与效果，获得更好的成果和绩效并提高干系人满意度。", "sourceMatch": 1.0, "sourceBlock": 38}, {"id": 45, "question": "管理质量过程的主要工作包括", "hint": "数过规", "answer": "1）执行质量管理计划中规划的质量管理活动；\n2）把质量标准和质量测量指标转化成测试与评估文件，供控制质量过程使用。\n3）根据风险评估报告识别与处置项目质量目标的机会和威胁，以便提出必要的变更请求。\n4）根据质量控制测量结果评价质量管理绩效及质量管理体系的合理性，提出必要的变更请求，\n实现过程改进。\n5）质量管理持续优化改进。\n6）编制质量报告，并向项目干系人报告项目质量绩效。、", "sourceMatch": 1.0, "sourceBlock": 39}, {"id": 46, "question": "质量审计目标一般包括", "hint": "找好的，找不好的，分享好的，提供协助，强调积累", "answer": "识别全部正在实施的良好及最佳实践；\n识别所有违规做法，差距及不足；\n分享所在组织或行业中类似项目的良好实践；\n积极主动的提供帮助，以改进过程的执行，从而帮助团队提高生产效率；\n强调每次审计都应对组织经验教训知识库的积累做出贡献。\n【总结助记：找好的，找不好的，分享好的，提供协助，强调积累】", "sourceMatch": 1.0, "sourceBlock": 40}, {"id": 47, "question": "资源管理计划", "hint": "识别获取角色，组织团队培训，建设资源计划", "answer": "(1)识别资源。用于识别和量化项目所需的团队和实物资源的方法。\n(2)获取资源。关于如何获取项目所需的团队和实物资源的指南。\n(3)角色与职责。包括：①角色：分配给某人的职务，如土木工程师。②职权：使用项目资源、作出\n决策、签字批准、验收可交付成果并影响他人开展项目工作的权力。③职责：必须履行的职责和工\n作。④能力：为完成项目活动，项目团队成员需具备的技能和才干。\n(4)项目组织图。项目组织图以图形方式展示项目团队成员及其报告关系。\n(5)项目团队资源管理。关于如何定义、配备、管理和最终遣散项目团队资源的指南。\n(6)培训。针对项目成员的培训策略。\n(7)团队建设。建设项目团队的方法。\n(8)资源控制。为项目需求优化实物资源采购而采用的方法\n(9)认可计划。将给予团队成员哪些认可和奖励，以及何时给予。\n【总结助记：识别获取角色，组织团队培训，建设资源计划】", "sourceMatch": 1.0, "sourceBlock": 41}, {"id": 48, "question": "项目资源表现大多数格式属于", "hint": "层责文", "answer": "层级型、矩阵型、文本型", "sourceMatch": 1.0, "sourceBlock": 42}, {"id": 49, "question": "层级型包括", "hint": "工作资源项目", "answer": "工作分解结构 WBS、组织分解结构 OBS、资源分解结构RBS", "sourceMatch": 1.0, "sourceBlock": 43}, {"id": 50, "question": "职责分配矩阵 RAM", "hint": "RACI", "answer": "可确保任何一项任务都只有一个人负责，从而避免职权不清，RAM 的一\n个例子是 RACI（执行、负责、咨询、知情）矩阵", "sourceMatch": 1.0, "sourceBlock": 44}, {"id": 51, "question": "团队章程包括", "hint": "核信方解", "answer": "团队价值观、沟通指南、决策标准和过程、冲突处理过程、会议指南、团队共识", "sourceMatch": 1.0, "sourceBlock": 45}, {"id": 52, "question": "可实现团队高效运行的行为主要包括", "hint": "开坦管信", "answer": "使用开放与有效的沟通 ● 创造团队建设机遇\n建立团队成员间的信任 ● 以建设性方式管理冲突\n鼓励合作型的问题解决方法 ● 鼓励合作型的决策方法", "sourceMatch": 1.0, "sourceBlock": 46}, {"id": 53, "question": "建设项目团队的目标包括", "hint": "提竞提合", "answer": "提高团队成员的知识和技能：以提高他们完成项目可交付成果的能力，并降低成本、缩短\n工期和提高质量。\n提高团队成员之间的信任和认同感：以提高士气、减少冲突和增进团队协作。\n创建富有生气、凝聚力和协作性的团队文化：一是提高个人和团队生产效率，振奋团队精\n神，促进团队合作；二是促进团队成员之间的交叉培训和辅导，已分享知识和经验。\n提高团队参与决策的能力：使他们承担起对解决方案的责任，从而提高团队的生产效率，\n获得更有效和高效的成果等。", "sourceMatch": 1.0, "sourceBlock": 47}, {"id": 54, "question": "塔克曼阶段理论(团队发展的模型)", "hint": "成正规发散", "answer": "）中提出团队建设通常要五个阶段进行：\n（1）形成阶段 （2）震荡阶段 （3）规范阶段 （4）成熟阶段 （5）解散阶段\n【助记：成正规发散】", "sourceMatch": 1.0, "sourceBlock": 48}, {"id": 55, "question": "评价团队有效性的指标包括", "hint": "小能低", "answer": "个人技能的改进，从而使成员更有效的完成工作任务；\n团队能力的改进，从而使团队成员更好地开展工作；\n团队成员离职率的降低；\n团队凝聚力的加强，从而使团队成员公开分享信息和经验，并互相帮助来提高项目绩效。", "sourceMatch": 1.0, "sourceBlock": 49}, {"id": 56, "question": "建设团队的工具(或活动)", "hint": "集团可训人", "answer": "）：\n集中办公、人际关系与团队技能、认可与奖励、培训、个人和团队评估\n【助记：集团可训人】", "sourceMatch": 1.0, "sourceBlock": 50}, {"id": 57, "question": "管理团队的主要工作包括", "hint": "管解评", "answer": "在管理团队的过程中，分析冲突背景，原因和阶段，采用适当方法解决冲突；\n考核团队绩效并向成员反馈考核结果；\n持续评估工作职责的落实情况\n持续评估团队成员的技能并提出改进建议\n发现、分析和解决成员之间的误解，发现和纠正违反基本规则的言行\n对于虚拟团队，则还要持续评估虚拟团队成员参与的有效性。", "sourceMatch": 1.0, "sourceBlock": 51}, {"id": 58, "question": "冲突的来源", "hint": "资需排", "answer": "资源稀缺\n进度优先级排序\n个人工作风格差异", "sourceMatch": 1.0, "sourceBlock": 52}, {"question": "冲突的发展阶段", "hint": "潜感受呈结", "answer": "潜伏阶段\n感知阶段\n感受阶段\n呈现阶段\n结束阶段", "sourceMatch": 1.0, "sourceBlock": 52, "id": 59}, {"id": 60, "question": "常用的冲突解决方法如下", "hint": "不能撤退和妥协，只能强迫合作", "answer": "撤退/回避 ● 缓和/包容 ● 妥协/调解 ● 强迫/命令 ● 合作/解决问题\n【助记：不能撤退和妥协，只能强迫合作】", "sourceMatch": 1.0, "sourceBlock": 53}, {"id": 61, "question": "沟通渠道计算", "hint": "n(n-1)/2", "answer": "计算公式：N(N-1）/2；例如：项目组共 5人，渠道数=5（5-1）/2=10", "sourceMatch": 1.0, "sourceBlock": 54}, {"id": 62, "question": "沟通方法主要包括", "hint": "交推拉", "answer": "互动、推式沟通、拉式沟通", "sourceMatch": 1.0, "sourceBlock": 55}, {"id": 63, "question": "沟通管理计划主要包括", "hint": "需求详细上报；发布时沟通保密；接收技术资源优化；术语流向制约", "answer": "干系人的沟通需求\n需沟通的信息，包括语音、形式、内容和详细程度\n上报步骤\n发布信息的原因\n发布所需信息，确认已收到，或做出回应的时限和频率\n负责沟通相关信息的人员\n负责授权保密信息发布的人员\n接受信息的人员和群体\n用于传递信息的方法或技术\n为沟通活动分配的资源，包括时间和预算\n随着项目进展而更新与优化沟通管理计划的方法\n通用术语表\n项目信息流向图，工作流程，报告清单和会议计划等\n来自法律法规、技术、组织政策等的制约因素等。\n【总结助记：需求详细上报；发布时沟通保密；接收技术资源优化；术语流向制约】", "sourceMatch": 1.0, "sourceBlock": 56}, {"id": 64, "question": "项目沟通记录主要包括", "hint": "时内源", "answer": "绩效报告，可交付成果的状态，进度进展，产生的成本，演示，以及干系人需要的其他信息。", "sourceMatch": 1.0, "sourceBlock": 57}, {"id": 65, "question": "监督沟通", "hint": "确保实", "answer": "是确保满足项目及其干系人的信息需求的过程。本过程的主要作用是按沟通管理计划和干系人参与\n计划的要求优化信息传流程。", "sourceMatch": 1.0, "sourceBlock": 58}, {"id": 66, "question": "项目干系人的主要类别通常包括", "hint": "项顾执", "answer": "项目客户和用户，项目团队及成员，项目发起人，资源或职能部门，供应商，以及其他相关组织或\n个人等", "sourceMatch": 1.0, "sourceBlock": 59}, {"id": 67, "question": "干系人的利害关系组合主要包括", "hint": "利权影迫", "answer": "兴趣、权力、所有权、知识、贡献", "sourceMatch": 1.0, "sourceBlock": 60}, {"id": 68, "question": "干系人分类方法", "hint": "权方凸影", "answer": "作用影响方向、干系人立方体、凸显模型、影响方向、优先级排序\n权力/利益方格：", "sourceMatch": 1.0, "sourceBlock": 61}, {"id": 69, "question": "干系人分类方法影响方向", "hint": "向向向向", "answer": "向上：客户、高级管理员\n向下：团队专家\n向外：供应商、政府机构、公众\n横向：项目经理同级人员", "sourceMatch": 1.0, "sourceBlock": 62}, {"id": 70, "question": "干系人的信息,主要包括", "hint": "身评类", "answer": "身份信息、评估信息、干系人分类", "sourceMatch": 0.95, "sourceBlock": 63}, {"id": 71, "question": "干系人参与度评估矩阵", "hint": "不抵中支领", "answer": "C 代表每个干系人的当前参与水平，D是项目团队评估出来的（期望的）\n干系人参与水平可分为如下几种：\n不了解型 ● 抵制型 ● 中立型 ● 支持型 ● 领导型", "sourceMatch": 1.0, "sourceBlock": 64}, {"id": 72, "question": "干系人参与计划", "hint": "现期策略", "answer": "主要包括调动干系人个人或群体参与的特定策略或方法。", "sourceMatch": 1.0, "sourceBlock": 65}, {"id": 73, "question": "管理干系人参与", "hint": "提支抗", "answer": "是与干系人进行沟通和协作以满足其需求与期望，处理问题，并促进干系人合理\n参与的过程。本过程的主要作用：让项目经理能够提高干系人的支持，并尽可能降低干系人的抵制。", "sourceMatch": 1.0, "sourceBlock": 66}, {"id": 74, "question": "在管理干系人参与过程中,需要开展多项活动", "hint": "经引协解", "answer": "在适当的项目阶段引导干系人参与，以便获取，确认或维持他们对项目成功的持续承诺；\n通过谈判和沟通的方式管理干系人期望；\n处理与干系人管理有关的任何风险或潜在关注点，预测干系人可能在未来引发的问题；\n澄清和解决已识别的问题等", "sourceMatch": 0.93, "sourceBlock": 67}, {"id": 75, "question": "监督干系人参与", "hint": "监策效", "answer": "是监督项目干系人关系，并通过修订参与策略和计划来引导干系人合理参与项\n目的过程。本过程的主要作用是，随着项目进展和环境变化，维持或提升干系人参与活动的效率和\n效果。", "sourceMatch": 1.0, "sourceBlock": 68}, {"id": 76, "question": "招标文件使用不同文件的条件如下", "hint": "邀报建", "answer": "信息邀请书（RFI） ● 报价邀请书（RFQ） ● 建议邀请书（RFP）", "sourceMatch": 1.0, "sourceBlock": 69}, {"id": 77, "question": "合同分类（按项目范围划分）", "hint": "总单成", "answer": "项目总承包合同\n项目单项承包合同\n项目分包合同", "sourceMatch": 1.0, "sourceBlock": 70}, {"id": 78, "question": "订立项目分包合同必须同时满足以下5个条件", "hint": "认可非主体资质，不能转包分包", "answer": "经过买方认可；\n分包的部分必须是项目非主体工作；\n只能分包部分项目，而不能转包整个项目；\n分包方必须具备相应的资质条件；\n分包方不能再次分包。\n【总结助记：认可非主体资质，不能转包分包】", "sourceMatch": 1.0, "sourceBlock": 71}, {"id": 79, "question": "合同分类（按项目付款方式划分）", "hint": "总成功", "answer": "总价合同\n成本补偿合同\n工料合同", "sourceMatch": 1.0, "sourceBlock": 72}, {"id": 80, "question": "合同签订时注意的主要内容及条款", "hint": "名称内容，质量计划，期限保密，风险归属，验收价款，违约争议，术语", "answer": "(1)项目名称。\n(2)标的内容和范围。\n(3)项目的质量要求。\n(4)项目的计划、进度、地点、地域和方式。\n(5)项目建设过程中的各种期限。\n(6)技术情报和资料的保密。\n(7)风险责任的承担\n(8)技术成果的归属。\n(9)验收的标准和方法。\n(10)价款、报酬(或使用费)及其支付方式。\n(11)违约金或者损失赔偿的计算方法。\n(12)解决争议的方法。\n(13)名词术语解释。\n【总结助记：名称内容，质量计划，期限保密，风险归属，验收价款，违约争议，术语】", "sourceMatch": 1.0, "sourceBlock": 73}, {"id": 81, "question": "采购形式一般有", "hint": "招议竞", "answer": "直接采购:直接邀请某一家厂商报价或提交建议书，没有竞争性。\n邀请招标:邀请一些厂家报价或提交建议书，具有限竞争性。\n竞争招标:公开发布招标广告，以便潜在卖方报价或提交建议书，具有很大的竞争性。", "sourceMatch": 1.0, "sourceBlock": 74}, {"id": 82, "question": "实施采购过程包括", "hint": "招投评授", "answer": "招标，投标，评标和授标四个环节", "sourceMatch": 1.0, "sourceBlock": 75}, {"id": 83, "question": "常用的评标方法包括", "hint": "最低权", "answer": "加权打分法 ● 筛选系统 ● 独立估算", "sourceMatch": 1.0, "sourceBlock": 76}, {"id": 84, "question": "采购文档可包括", "hint": "招标投标", "answer": "1）招标文件。招标文件包括发给卖方的信息邀请书，建议邀请书，报价邀请书或其他文件\n2）采购工作说明书。\n3）独立成本估算。独立成体估算可由内部或外部人员\n4）供方选择标准。", "sourceMatch": 1.0, "sourceBlock": 77}, {"id": 85, "question": "合同管理活动可能包括以下5个方面", "hint": "监变索收", "answer": "(1)收集数据和管理项目记录\n(2)完善采购计划和进度计划；\n(3)建立与采购相关的项目数据的收集，并为组织编制定期报告;\n(4)监督采购环境，以便引导或调整实施；\n(5)向卖方付款", "sourceMatch": 1.0, "sourceBlock": 78}, {"id": 86, "question": "风险分类（按照风险后果/来源划分）", "hint": "技外组环", "answer": "按后果：\n纯粹风险（如无任何收益，如失火）和投机风险（可能带来收益）。在一定条件下可以相互转化。风\n险不是零和游戏，有时涉及各方都要蒙受损失，无一幸免\n按照风险来源：\n自然风险：由于自然力的作用，造成财产损毁或人员伤亡的风险属于自然风险。\n人为风险:指由于人的活动而带来的风险。人为风险又可以细分为行为，经济，技术，政策和组织\n风险等。", "sourceMatch": 0.73, "sourceBlock": 79}, {"id": 87, "question": "按照风险的可预测性划分", "hint": "已知乐观的目标变动了；可预测业主分包商机械地质；不可预测地震暴雨膨胀政策", "answer": "已知风险\n可预测风险\n不可预测风险\n（1）已知风险。发生概率高，但一般后果轻微，不严重。如：项目目标不明确，过分乐观的进度\n计划，设计或施工变更和材料价格波动等。【助记：已知乐观的目标变动了】\n（2）可预测风险。可以预见其发生，但不可预见其后果的风险。这类风险的后果有时可能相当严\n重。如：业主不能及时审查批准，分包商不能及时交工，施工机械出现故障，不可预见的地质条件\n等。【助记：可预测业主分包商机械地质（两人一机一地）】\n（3）不可预测风险。有可能发生，但即使最有经验的人亦不能预见的风险。也称未知风险或未识\n别的风险。如地震、百年不遇的暴雨、通货膨胀和政策变化等。\n【助记：不可预测地震暴雨膨胀政策（两自然两经济）】", "sourceMatch": 1.0, "sourceBlock": 80}, {"id": 88, "question": "当完成识别风险过程时,风险登记册的内容主要包括", "hint": "清责应", "answer": "（1）已识别风险的清单。（2）潜在风险责任人。（3）潜在风险应对措施清单", "sourceMatch": 0.98, "sourceBlock": 81}, {"id": 89, "question": "风险报告的主要内容有", "hint": "源概要求", "answer": "1、整体项目风险的来源;\n2、关于已识别的单个项目风险的概述信息;\n3、根据风险管理计划中规定的报告要求的其他信息", "sourceMatch": 1.0, "sourceBlock": 84}, {"id": 90, "question": "威胁应对策略有哪些", "hint": "上规转减接", "answer": "1、上报 2、规避 3、转移 4、减轻 5、接受", "sourceMatch": 1.0, "sourceBlock": 85}, {"id": 91, "question": "机会应对策略有哪些", "hint": "上开分提接", "answer": "1、上报 2、开拓 3、分享 4、提高 5、接受", "sourceMatch": 1.0, "sourceBlock": 86}, {"id": 92, "question": "整体项目风险应对策略有哪些", "hint": "规开转减接", "answer": "1 规避 2 开拓 3 转移或分享 4 减轻或提高 5 接受。", "sourceMatch": 1.0, "sourceBlock": 87}, {"id": 93, "question": "监督风险", "hint": "监应跟识", "answer": "是在整个项目期间，监督商定的风险应对计划的实施，跟踪已识别\n风险，识别和分析新风险，以及评估风险管理有效性的过程。\n本过程的主要作用是，使项目决策都基于关于整体项目风险和单个项目风险的当前信息。", "sourceMatch": 1.0, "sourceBlock": 88}, {"id": 94, "question": "采购沟通说明书里有什么内容", "hint": "权时成", "answer": "包括规格、所需数量、质量水平、绩效数据、履约期间、工作地点和其他要求。", "sourceMatch": 1.0, "sourceBlock": 89}, {"id": 95, "question": "配置状态有哪几种", "hint": "草基发", "answer": "1、草稿 2、正式 3、修改", "sourceMatch": 1.0, "sourceBlock": 90}, {"id": 96, "question": "配置库的类型有哪些", "hint": "开受产", "answer": "1、开发库 2、受控库 3、产品库", "sourceMatch": 1.0, "sourceBlock": 91}, {"id": 97, "question": "配置审计的作用", "hint": "保一", "answer": "1、防止向用户提交不适合的产品;\n2、发现不完善的实现\n3、找出各配置项间不匹配或不相容的现象;\n4、确认配置项已在所要求的质量控制审核之后纳入基线并入库保存:\n5、确认记录和文档保持可追溯性等。", "sourceMatch": 1.0, "sourceBlock": 92}, {"id": 98, "question": "功能配置具体验证主要包括", "hint": "规程", "answer": "1、配置项的开发已圆满完成;\n2、配置项已达到配置标识中规定的性能和功能特征;\n3、配置项的操作和支持文档已完成并且符合要求等。", "sourceMatch": 1.0, "sourceBlock": 93}, {"id": 99, "question": "物理配置审计验证主要包括", "hint": "配实", "answer": "1、要交付的配置项是否存在;\n2、配置项中是否包含了所有必需的项目等。", "sourceMatch": 1.0, "sourceBlock": 94}, {"id": 100, "question": "变更的常见原因有哪些", "hint": "法企需产", "answer": "1、产品范围(成果)定义的过失或者疏忽;\n2、项目范围(工作)定义的过失或者疏忽;\n3、增值变更;\n4、应对风险的紧急计划或回避计划;\n5、项目执行过程与基准要求不一致带来的被动调整\n6、外部事件等。", "sourceMatch": 1.0, "sourceBlock": 95}, {"id": 101, "question": "根据变更性质分类", "hint": "重重一般", "answer": "1)重大变更 2)重要变更 3)一般变更; 通过不同审批权限来控制", "sourceMatch": 1.0, "sourceBlock": 96}, {"id": 102, "question": "根据变更的迫切性分类", "hint": "紧紧一般", "answer": "变更分为?\n1、紧急变更 2、非紧急变更 通过流程来控制", "sourceMatch": 1.0, "sourceBlock": 97}, {"id": 103, "question": "配置管理的日常管理活动主要包括", "hint": "计别控、报审改", "answer": "制订配置管理计划，配置项识别，配置项控制，配置状态报告，配置审计，配置管理回顾与改进等。\n【助记：计别控、报审改】", "sourceMatch": 1.0, "sourceBlock": 98}, {"id": 104, "question": "干系人的信息，主要包括", "hint": "身评类", "answer": "身份信息、评估信息、干系人分类", "sourceMatch": 1.0, "sourceBlock": 63}, {"id": 105, "question": "详细可行性研究的方法", "hint": "技经社运", "answer": "技术可行性分析、经济可行性分析、社会效益可行性分析、运行环境可行性分析、其他方面可行\n性分析", "sourceMatch": 0.67, "sourceBlock": 5}, {"id": 106, "question": "变更控制的工作程序", "hint": "申初论审，通监评收", "answer": "1 .变更申请\n2.对变更的初审\n3.变更方案论证\n4.变更审查\n5.发出通知并实施\n6.实施监控\n7.效果评估\n8.变更收尾，判断发生变更后的项目是否已纳入正常轨道\n【助记：申初论审，通监评收】", "sourceMatch": 1.0, "sourceBlock": 99}, {"id": 107, "question": "信息(文档)的规范化管理主要体现在", "hint": "图书莫管", "answer": "文档书写规范，图表编号规则，文档目录编写标准和文档管理制度等\n【助记：图书莫管】", "sourceMatch": 1.0, "sourceBlock": 100}];
+const dataCorrections=new Map([
+  [6,{answer:'1. 对 PMO 所辖全部项目的共享资源进行管理\n2. 识别和制定项目管理方法、最佳实践和标准\n3. 指导、辅导、培训和监督\n4. 通过项目审计，监督项目对项目管理标准、政策、程序和模板的合规性\n5. 制定和管理项目政策、程序、模板及其他共享文件（组织过程资产）\n6. 对跨项目的沟通进行协调等'}],
+  [11,{answer:'支出分析\n收益分析\n投资回报分析\n敏感性分析'}],
+  [12,{answer:'项目的必要性\n项目的市场预测\n项目预期成果（如产品方案或服务）的市场预测\n项目建设必需的条件'}],
+  [14,{answer:'明确项目与组织战略目标之间的直接联系\n确立项目的正式地位\n展示组织对项目的承诺'}],
+  [17,{answer:'1. 子管理计划：范围管理计划、需求管理计划、进度管理计划、成本管理计划、质量管理计划、资源管理计划、沟通管理计划、风险管理计划、采购管理计划、干系人参与计划\n2. 基准：范围基准、进度基准、成本基准\n3. 其他组件：变更管理计划、配置管理计划、绩效测量基准、项目生命周期、开发方法、管理审查'}],
+  [22,{answer:'1）业务需求\n2）干系人需求\n3）解决方案需求\n4）过渡和就绪需求\n5）项目需求\n6）质量需求'}],
+  [33,{answer:'以项目生命周期的各阶段作为分解的第二层\n以主要可交付成果作为分解的第二层\n将项目团队以外组织开发的组件纳入 WBS，卖方为外包工作制定合同 WBS'}],
+  [43,{answer:'按时完成的任务的百分比\n以 CPI 测量的成本绩效\n故障率、每天识别的缺陷数量\n每月总停机时间\n每个代码行的错误\n客户满意度分数\n以及测试计划所涵盖的需求的百分比'}],
+  [45,{answer:'1）执行质量管理计划中规划的质量管理活动；\n2）把质量标准和质量测量指标转化成测试与评估文件，供控制质量过程使用。\n3）根据风险评估报告识别与处置项目质量目标的机会和威胁，以便提出必要的变更请求。\n4）根据质量控制测量结果评价质量管理绩效及质量管理体系的合理性，提出必要的变更请求，实现过程改进。\n5）质量管理持续优化改进。\n6）编制质量报告，并向项目干系人报告项目质量绩效。'}],
+  [48,{question:'项目资源管理中，角色与职责的常用表示形式属于'}],
+  [54,{answer:'团队建设通常要经过五个阶段：\n（1）形成阶段 （2）震荡阶段 （3）规范阶段 （4）成熟阶段 （5）解散阶段\n【助记：成正规发散】'}],
+  [65,{answer:'是确保满足项目及其干系人的信息需求的过程。本过程的主要作用是按沟通管理计划和干系人参与计划的要求优化信息传递流程。'}],
+  [68,{answer:'权力/利益方格、权力/影响方格、作用/影响方格\n干系人立方体\n凸显模型\n影响方向\n优先级排序'}],
+  [69,{answer:'向上：执行组织或客户组织、发起人和指导委员会的高级管理层\n向下：临时贡献知识或技能的团队或专家\n向外：供应商、政府机构、公众、最终用户和监管部门等\n横向：项目经理的同级人员，如其他项目经理或中层管理人员'}],
+  [81,{answer:'直接采购：直接邀请某一家厂商报价或提交建议书，没有竞争性\n邀请招标：邀请一些厂商报价或提交建议书，具有有限竞争性\n竞争招标：公开发布招标广告，以便潜在卖方报价或提交建议书，具有很大的竞争性'}],
+  [84,{answer:'1）招标文件。招标文件包括发给卖方的信息邀请书、建议邀请书、报价邀请书或其他文件\n2）采购工作说明书\n3）独立成本估算。独立成本估算可由内部或外部人员编制\n4）供方选择标准'}],
+  [94,{question:'采购工作说明书里有什么内容'}],
+  [95,{hint:'草正改'}],
+  [102,{answer:'1、紧急变更\n2、非紧急变更\n通过流程来控制'}]
+]);
+dataCorrections.forEach((patch,id)=>{let item=ITEMS.find(entry=>entry.id===id);if(item)Object.assign(item,patch)});
+ITEMS.push(
+  {
+    id:108,
+    question:'详细可行性研究的方法',
+    hint:'',
+    answer:'1. 经济评价法\n2. 市场预测法\n3. 投资估算法\n4. 增量净效益法等'
+  },
+  {
+    id:109,
+    question:'项目评估的依据主要包括',
+    hint:'',
+    answer:'1. 项目建议书及其批准文件\n2. 项目可行性研究报告\n3. 报送组织的申请报告及主管部门的初审意见\n4. 项目关键建设条件和工程等的协议文件\n5. 必需的其他文件和资料等'
+  },
+  {
+    id:110,
+    question:'进度管理计划的内容一般包括',
+    hint:'',
+    answer:'1. 项目进度模型\n2. 进度计划的发布和迭代长度\n3. 精准度和计量单位\n4. WBS\n5. 项目进度模型维护\n6. 控制临界值\n7. 绩效测量规则和报告格式等'
+  },
+  {
+    id:111,
+    question:'预测型生命周期区别',
+    hint:'',
+    answer:'1. 需求在开发前预先确定\n2. 针对最终可交付成果制定交付计划，然后在项目结束时一次交付最终产品\n3. 尽量限制变更\n4. 关键干系人在特定里程碑点参与\n5. 通过对基本已知的情况编制详细计划来控制风险和成本'
+  },
+  {
+    id:112,
+    question:'迭代型与增量型生命周期区别',
+    hint:'',
+    answer:'1. 需求在交付期间定期细化\n2. 分次交付整体项目或产品的各个子集\n3. 定期把变更融入项目\n4. 关键干系人定期参与\n5. 通过用新信息逐渐细化计划来控制风险和成本'
+  },
+  {
+    id:113,
+    question:'适应型生命周期区别',
+    hint:'',
+    answer:'1. 需求在交付期间频繁细化\n2. 频繁交付对客户有价值的各个子集\n3. 在交付期间实时把变更融入项目\n4. 关键干系人持续参与\n5. 随着需求和制约因素的显现而控制风险和成本'
+  }
+);
+ITEMS.push({
+  id:114,
+  question:'在成本管理计划中一般需要规定',
+  hint:'计量、精确、准确、组织、临界、绩效、报告、其他',
+  answer:'1. 计量单位\n2. 精确度\n3. 准确度\n4. 组织程序链接\n5. 控制临界值\n6. 绩效测量规则\n7. 报告格式\n8. 其他细节'
+});
+ITEMS.push(
+  {
+    id:115,
+    question:'风险管理计划的内容主要包括',
+    hint:'策略、方法、职责、资金、时间、类别、偏好、概率影响、矩阵、报告、跟踪',
+    answer:'1. 风险管理策略\n2. 方法论\n3. 角色与职责\n4. 资金\n5. 时间安排\n6. 风险类别\n7. 干系人风险偏好\n8. 风险概率和影响\n9. 概率和影响矩阵\n10. 报告格式\n11. 跟踪等'
+  },
+  {
+    id:116,
+    question:'风险分解结构（RBS）中的项目风险来源包括',
+    hint:'技管商外',
+    answer:'1. 技术风险\n2. 管理风险\n3. 商业风险\n4. 外部风险'
+  }
+);
+ITEMS.push(
+  {
+    id:117,
+    question:'从付款类型划分，总价合同可以分为',
+    hint:'固励调订',
+    answer:'1. 固定总价合同\n2. 总价加激励费用合同\n3. 总价加经济价格调整合同\n4. 订购单'
+  },
+  {
+    id:118,
+    question:'从付款类型划分，成本补偿合同可以分为',
+    hint:'固励奖',
+    answer:'1. 成本加固定费用合同\n2. 成本加激励费用合同\n3. 成本加奖励费用合同'
+  },
+  {
+    id:119,
+    question:'在 CPIF 合同下，卖方付款总额的计算公式',
+    hint:'超支加、节约减',
+    answer:'1. 如果实际成本大于目标成本，卖方可以得到的付款总额为：目标成本 + 目标费用 + 买方应负担的成本超支\n2. 如果实际成本小于目标成本，卖方可以得到的付款总额为：目标成本 + 目标费用 - 买方应享受的成本节约'
+  },
+  {
+    id:120,
+    question:'采购管理计划可包括的内容',
+    hint:'协调时间指标，角色制约，司法货币，估算风险卖方',
+    answer:'1. 如何协调采购与项目的其他工作，例如项目进度计划的制订和控制\n2. 开展重要采购活动的时间表\n3. 用于管理合同的采购测量指标\n4. 与采购有关的干系人角色和职责；如果执行组织有采购部，还包括项目团队拥有的职权和受到的限制\n5. 可能影响采购工作的制约因素和假设条件\n6. 司法管辖权和付款货币\n7. 是否需要编制独立估算，以及是否应将其作为评价标准\n8. 风险管理事项，包括对履约保函或保险合同的要求，以减轻某些项目风险\n9. 拟使用的预审合格的卖方（如果有）等'
+  },
+  {
+    id:121,
+    question:'采购策略的内容',
+    hint:'交付、协议、推进',
+    answer:'1. 规定项目交付方法\n2. 具有法律约束力的协议类型\n3. 如何在采购阶段推动采购进展'
+  },
+  {
+    id:122,
+    question:'选择合同类型的具体原则',
+    hint:'明总、量料、糊成；共料买成卖总；标单；稳总变成；激励协调',
+    answer:'1. 如果工作范围很明确，且项目的设计已具备详细的细节，则使用总价合同\n2. 如果工作性质清楚，但工作量不是很清楚，而且工作不复杂，又需要快速签订合同，则使用工料合同\n3. 如果工作范围尚不清楚，则使用成本补偿合同\n4. 如果双方分担风险，则使用工料合同；如果买方承担成本风险，则使用成本补偿合同；如果卖方承担成本风险，则使用总价合同\n5. 如果是购买标准产品，且数量不大，则使用单边合同等\n6. 总价合同适用于工作类型可预知、需求能清晰定义且不太可能变更的情况\n7. 成本补偿合同适用于工作不断演进、很可能变更或未明确定义的情况\n8. 激励和奖励费用可用于协调买方和卖方的目标'
+  },
+  {
+    id:123,
+    question:'工作绩效数据包括',
+    hint:'工作、指标、技术、日期、故事、成果、进展、变更、缺陷、成本工期',
+    answer:'1. 已完成的工作\n2. 关键绩效指标（KPI）\n3. 技术绩效测量结果\n4. 进度活动的实际开始日期和完成日期\n5. 已完成的故事点\n6. 可交付成果状态\n7. 进度进展情况\n8. 变更请求的数量\n9. 缺陷的数量\n10. 实际发生的成本和实际持续时间等'
+  },
+  {
+    id:124,
+    question:'适用于管理沟通过程的人际关系与团队技能包括',
+    hint:'听文化、管会议、勤交往、懂政策',
+    answer:'1. 积极倾听\n2. 文化意识\n3. 会议管理\n4. 人际交往\n5. 政策意识等'
+  },
+  {
+    id:125,
+    question:'有效的沟通管理需要借助的技术主要包括',
+    hint:'收发选媒，写会演，引导倾听',
+    answer:'1. 发送方-接收方模型\n2. 媒介选择\n3. 写作风格\n4. 会议管理\n5. 演示\n6. 引导\n7. 积极倾听等'
+  },
+  {
+    id:126,
+    question:'适用于管理沟通过程的沟通技能包括',
+    hint:'胜任、反馈、非口头、演示',
+    answer:'1. 沟通胜任力\n2. 反馈\n3. 非口头技能\n4. 演示等'
+  },
+  {
+    id:127,
+    question:'立项申请（项目建议书）的定义和作用',
+    hint:'上报必需、框架设想、初始依据、外资先批',
+    answer:'1. 立项申请又称项目建议书，是项目建设单位向上级主管部门提交项目申请时所必需的文件\n2. 它是建设筹建单位根据发展规划、产业政策、市场条件、组织战略等提出的具体项目建议，是对拟建项目的框架性总体设想\n3. 项目建议书是项目发展周期初始阶段的产物，是国家或上级主管部门选择项目的依据，也是可行性研究的依据\n4. 涉及利用外资的项目，在项目建议书获得批准后，方可开展后续工作'
+  },
+  {
+    id:128,
+    question:'社会效益可行性分析的内容',
+    hint:'内：品竞创人管；外：公文环责他',
+    answer:'1. 对组织内部：品牌效益\n2. 对组织内部：竞争力效益\n3. 对组织内部：技术创新效益\n4. 对组织内部：人员提升收益\n5. 对组织内部：管理提升效益\n6. 对社会发展：公共效益\n7. 对社会发展：文化效益\n8. 对社会发展：环境效益\n9. 对社会发展：社会责任感效益\n10. 对社会发展：其他收益'
+  },
+  {
+    id:129,
+    question:'项目预算和成本基准的组成及汇总过程',
+    hint:'活动到工作包，工作包到控制账户，汇成基准，加管理储备成预算',
+    answer:'1. 汇总各项目活动的成本估算及其应急储备，得到相关工作包的成本\n2. 汇总各工作包的成本估算及其应急储备，得到控制账户的成本\n3. 汇总各控制账户的成本，得到成本基准\n4. 在成本基准之上增加管理储备，得到项目预算\n5. 需要动用管理储备时，应在获得变更控制过程批准后，把适量的管理储备移入成本基准'
+  },
+  {
+    id:130,
+    question:'SWOT 分析的含义及分析步骤',
+    hint:'优劣机威；先内优劣，再找机会威胁，最后交叉分析',
+    answer:'1. SWOT 分析是对项目的优势、劣势、机会和威胁进行逐个检查\n2. 它会把内部产生的风险包含在内，从而拓宽识别风险的范围\n3. 首先识别组织的优势和劣势\n4. 然后找出组织优势可能带来的机会，以及组织劣势可能造成的威胁\n5. 最后分析组织优势能在多大程度上克服威胁，以及组织劣势是否会妨碍机会的产生'
+  },
+  {
+    id:131,
+    question:'其他风险参数评估包括哪些风险特征',
+    hint:'急近潜，管控监，连战密',
+    answer:'1. 紧迫性：为有效应对风险而必须采取应对措施的时间段\n2. 邻近性：风险在多长时间后会影响一项或多项项目目标\n3. 潜伏期：从风险发生到影响显现之间可能的时间段\n4. 可管理性：风险责任人或责任组织管理风险发生或影响的容易程度\n5. 可控性：风险责任人或责任组织能够控制风险后果的程度\n6. 可监测性：对风险发生或即将发生进行监测的容易程度\n7. 连通性：风险与其他单个项目风险存在关联的程度\n8. 战略影响力：风险对组织战略目标潜在的正面或负面影响\n9. 密切度：风险被一名或多名干系人认为要紧的程度'
+  },
+  {
+    id:132,
+    question:'一般的采购步骤包括',
+    hint:'说明估算，广告名单，招标建议，双评综合，谈判签约',
+    answer:'1. 准备采购工作说明书（SOW）或工作大纲（TOR）\n2. 准备高层级的成本估算，制定预算\n3. 发布招标广告\n4. 确定合格卖方的名单\n5. 准备并发布招标文件\n6. 由卖方准备并提交建议书\n7. 对建议书开展技术评估，包括质量评估\n8. 对建议书开展成本评估\n9. 准备最终的综合评估报告，包括质量及成本，选出中标建议书\n10. 结束谈判，买方和卖方签署合同'
+  },
+  {
+    id:133,
+    question:'变更请求可能包括哪些类型',
+    hint:'纠预缺更',
+    answer:'1. 纠正措施：为使项目工作绩效重新与项目管理计划一致而进行的有目的的活动\n2. 预防措施：为确保项目工作的未来绩效符合项目管理计划而进行的有目的的活动\n3. 缺陷补救：为了修正不一致产品或产品组件而进行的有目的的活动\n4. 更新：对正式受控的项目文件或计划等进行变更，以反映修改或增加的意见或内容'
+  },
+  {
+    id:134,
+    question:'敏捷型与传统项目中管理质量执行人员的区别',
+    hint:'敏捷全员全程，传统特定成员',
+    answer:'1. 在敏捷型项目中，整个项目期间的质量管理由所有团队成员执行\n2. 在传统项目中，质量管理通常是特定团队成员的职责'
+  },
+  {
+    id:135,
+    question:'获取资源时多标准决策分析的选择标准',
+    hint:'可成能经知技态客',
+    answer:'1. 可用性：资源能否在项目所需时段内为项目所用\n2. 成本：增加资源的成本是否在规定预算内\n3. 能力：团队成员是否具备项目所需的能力\n4. 经验：团队成员是否具备项目成功所需的相关经验\n5. 知识：团队成员是否掌握客户、类似项目和项目环境的相关知识\n6. 技能：团队成员是否拥有使用项目工具的相关技能\n7. 态度：团队成员能否与他人协同工作并形成有凝聚力的团队\n8. 其他客观因素：团队成员的位置、时区和沟通能力'
+  },
+  {
+    id:136,
+    question:'需要进行资源预分派的情况',
+    hint:'竞标承诺、专有技能、提前指定',
+    answer:'1. 在竞标过程中承诺分派特定人员进行项目工作\n2. 项目取决于特定人员的专有技能\n3. 在完成资源管理计划前期工作之前，制定项目章程过程或其他过程已经指定了某些团队成员的工作'
+  },
+  {
+    id:137,
+    question:'不同生命周期中控制质量活动的区别',
+    hint:'敏捷全员全周期；预测特定人特定时',
+    answer:'1. 在敏捷或适应型项目中，控制质量活动可能由所有团队成员在整个项目生命周期中执行\n2. 在瀑布或预测型项目中，控制质量活动由特定团队成员在特定时间点，或者在项目或阶段快结束时执行'
+  },
+  {
+    id:138,
+    question:'控制进度过程关注的内容',
+    hint:'判状态、影响因素、重审储备、判断变更、管理变更',
+    answer:'1. 判断项目进度的当前状态\n2. 对引起进度变更的因素施加影响\n3. 重新考虑必要的进度储备\n4. 判断项目进度是否已经发生变更\n5. 在变更实际发生时对其进行管理'
+  },
+  {
+    id:139,
+    question:'敏捷方法下控制进度需要关注的内容',
+    hint:'比交付、做回顾、排剩余、定速度、判变更、管变更',
+    answer:'1. 比较上一个时间周期中已交付并验收的工作总量与已完成的工作估算值，判断项目进度的当前状态\n2. 实施回顾性审查，以便纠正与改进过程\n3. 对剩余工作计划重新进行优先级排序\n4. 确定每次迭代时间内可交付成果的生成、核实和验收速度\n5. 确定项目进度已经发生变更\n6. 在变更实际发生时对其进行管理'
+  },
+  {
+    id:140,
+    question:'项目成本控制的目标包括',
+    hint:'影响基准、处理变更、不超限、监偏差、防未批、报成本、控超支',
+    answer:'1. 对造成成本基准变更的因素施加影响\n2. 确保所有变更请求都得到及时处理\n3. 当变更实际发生时管理这些变更\n4. 确保成本支出不超过批准的资金限额，包括时段、WBS组件、活动和项目总限额\n5. 监督成本绩效，找出并分析与成本基准之间的偏差\n6. 对照资金支出监督工作绩效\n7. 防止在成本或资源使用报告中出现未经批准的变更\n8. 向干系人报告所有经批准的变更及其相关成本\n9. 设法把预期的成本超支控制在可接受的范围内'
+  },
+  {
+    id:141,
+    question:'控制资源过程关注的内容',
+    hint:'支出、缺剩、用释、通知、影响、管理',
+    answer:'1. 监督资源支出\n2. 及时识别和处理资源缺乏或剩余情况\n3. 确保根据计划和项目需求使用并释放资源\n4. 出现资源相关问题时通知相应干系人\n5. 影响可能导致资源使用变更的因素\n6. 在变更实际发生时对其进行管理'
+  },
+  {
+    id:142,
+    question:'合同索赔与争议的处理方法',
+    hint:'全程记录管理；不能自行解决用 ADR；谈判优先',
+    answer:'1. 在整个合同生命周期中，按照合同条款对索赔进行记录、处理、监督和管理\n2. 如果合同双方无法自行解决索赔问题，可按合同规定的程序使用替代争议解决方法（ADR）处理\n3. 谈判是解决所有索赔和争议的首选方法'
+  },
+  {
+    id:143,
+    question:'监控项目工作过程主要关注的内容',
+    hint:'比绩效、评措施、查风险、维信息、供测预、监变更、报项目集、对商业',
+    answer:'1. 把项目的实际绩效与项目管理计划进行比较\n2. 定期评估项目绩效，决定是否需要采取纠正或预防措施，并推荐必要的措施\n3. 检查单个项目风险的状态\n4. 在整个项目期间维护准确且及时更新的信息库，以反映产品及文件情况\n5. 为状态报告、进展测量和预测提供信息\n6. 做出预测，以更新当前的成本与进度信息\n7. 监督已批准变更的实施情况\n8. 如果项目是项目集的一部分，向项目集管理层报告项目进展和状态\n9. 确保项目与商业需求保持一致'
+  },
+  {
+    id:144,
+    question:'系统集成项目验收阶段的四项工作',
+    hint:'测试、试运行、文档验收、终验',
+    answer:'1. 验收测试\n2. 系统试运行\n3. 系统文档验收\n4. 项目终验'
+  },
+  {
+    id:145,
+    question:'系统集成项目涉及的验收文档',
+    hint:'项目介绍与最终报告，系统说明与维护，软硬件产品文件',
+    answer:'1. 系统集成项目介绍\n2. 系统集成项目最终报告\n3. 信息系统说明手册\n4. 信息系统维护手册\n5. 软硬件产品说明书、质量保证书等'
+  },
+  {
+    id:146,
+    question:'项目总结的主要意义',
+    hint:'了解绩效、总结问题、吸取经验、纳入资产',
+    answer:'1. 了解项目全过程的工作情况及相关团队或成员的绩效状况\n2. 了解出现的问题并进行改进措施总结\n3. 了解项目全过程中值得吸取的经验并进行总结\n4. 对总结后的文档进行讨论，通过后存入公司的知识库，纳入组织过程资产'
+  },
+  {
+    id:147,
+    question:'项目总结会应讨论的内容',
+    hint:'目标、技术、成本、进度、沟通、问题、建议',
+    answer:'1. 项目目标：项目价值和目标的完成情况、项目计划完成率等\n2. 技术绩效：范围变化、变更合理性及有效性、质量标准和客户满意度等\n3. 成本绩效：最终成本与原始预算的差异及项目盈利状况\n4. 进度计划绩效：最终进度与原计划的比较及提前或延后的原因\n5. 项目沟通：沟通体系、客户参与、定期沟通、问题通知和会议记录等\n6. 识别问题和解决问题：问题是否解决、原因能否避免及如何改进\n7. 意见和改进建议：项目成员对项目管理和执行计划的建议及其后续应用'
+  },
+  {
+    id:148,
+    question:'配置管理相关的角色',
+    hint:'委员会、负责人、管理员、配置项负责人',
+    answer:'1. 配置控制委员会（CCB）\n2. 配置管理负责人\n3. 配置管理员\n4. 配置项负责人'
+  },
+  {
+    id:149,
+    question:'配置管理的关键成功因素',
+    hint:'记录分类编号审计，负责人关注变化，定期回顾关联管理',
+    answer:'1. 所有配置项都应该记录\n2. 配置项应该分类\n3. 所有配置项都要进行编号\n4. 应定期对配置库或配置管理数据库中的配置项信息进行审计\n5. 每个配置项建立后应有配置负责人负责\n6. 要关注配置项的变化情况\n7. 应定期对配置管理进行回顾\n8. 能够与项目的其他管理活动进行关联'
+  },
+  {
+    id:150,
+    question:'配置控制的任务及基于配置库的变更控制',
+    hint:'申评告实验证发库；产品到受控，检出修改，检入解锁，新版入库',
+    answer:'1. 变更申请\n2. 变更评估\n3. 通告评估结果\n4. 变更实施\n5. 变更验证与确认\n6. 变更的发布\n7. 基于配置库的变更控制\n8. 将待升级的基线从产品库中取出并放入受控库\n9. 程序员从受控库检出代码，放入开发库修改；检出后代码被锁定\n10. 程序员将修改后的代码检入受控库，代码锁定被解除\n11. 升级完成后，将受控库中的新基线存入产品库，并继续保留旧版本'
+  },
+  {
+    id:151,
+    question:'变更管理的原则及主要内容',
+    hint:'原则：基准化、规范化；内容：基流组沟时影响文档',
+    answer:'1. 变更管理的原则：项目基准化\n2. 变更管理的原则：变更管理过程规范化\n3. 基准管理\n4. 变更控制流程化\n5. 明确组织分工\n6. 与干系人充分沟通\n7. 变更的及时性\n8. 评估变更的可能影响\n9. 妥善保存变更产生的相关文档'
+  },
+  {
+    id:152,
+    question:'项目经理在变更中的作用',
+    hint:'响应需求、评估影响、技术转资源、供决策、调基准、监实施',
+    answer:'1. 响应变更提出者的需求\n2. 评估变更对项目的影响及应对方案\n3. 将需求由技术要求转化为资源要求，供授权人决策\n4. 依据变更评审结果调整基准，确保项目基准反映项目实施情况\n5. 监控变更及已批准的变更正确实施'
+  },
+  {
+    id:153,
+    question:'信息系统项目中的变更管理角色',
+    hint:'委员会、负责人、请求者、实施者、顾问委员会',
+    answer:'1. 变更控制委员会（CCB）\n2. 变更管理负责人\n3. 变更请求者\n4. 变更实施者\n5. 变更顾问委员会'
+  },
+  {
+    id:154,
+    question:'变更控制委员会（CCB）的性质及主要职责',
+    hint:'正式决策非作业；审决、通知、确认',
+    answer:'1. CCB 是由主要项目干系人代表组成的正式团体\n2. CCB 是决策机构，不是作业机构，通过评审决定项目基准是否能变更\n3. 审查、评价、批准、推迟或否决项目变更\n4. 将变更申请的批准、否决或推迟决定通知受影响的相关干系人\n5. 接收变更与验证结果，确认变更是否按要求完成'
+  },
+  {
+    id:155,
+    question:'监督风险过程利用绩效信息确定的内容',
+    hint:'应对、整体、单项、新风险、方法、假设、遵守、储备、策略',
+    answer:'1. 实施的风险应对是否有效\n2. 整体项目风险级别是否已改变\n3. 已识别单个项目风险的状态是否已改变\n4. 是否出现新的单个项目风险\n5. 风险管理方法是否依然适用\n6. 项目假设条件是否仍然成立\n7. 风险管理政策和程序是否已得到遵守\n8. 成本或进度应急储备是否需要修改\n9. 项目策略是否仍然有效等'
+  }
+);
+// 删除两道重复题（原 104 与 70 重复，原 105 与 9 重复），并保持题号连续。
+const redundantIds=new Set([104,105]);
+for(let i=ITEMS.length-1;i>=0;i--){if(redundantIds.has(ITEMS[i].id))ITEMS.splice(i,1)}
+ITEMS.forEach(item=>{if(item.id>=106)item.id-=2});
+
+function readStore(key){try{let raw=localStorage.getItem(key);if(raw===null)return null;let value=JSON.parse(raw);return value&&typeof value==='object'&&!Array.isArray(value)?value:null}catch(error){console.warn(`无法读取练习记录 ${key}`,error);return null}}
+function writeStore(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(error){console.warn(`无法保存练习记录 ${key}`,error);return false}}
+const KEY='zx-memory-v5';let saved=readStore(KEY);
+if(saved===null){let v4=readStore('zx-memory-v4'),v3=readStore('zx-memory-v3'),migrated={};if(v4!==null){Object.entries(v4).forEach(([k,v])=>{let n=Number(k);if(!Number.isFinite(n)||n===104)return;if(n>=105)n-=1;migrated[n]=v})}else if(v3!==null){Object.entries(v3).forEach(([k,v])=>{let n=Number(k);if(!Number.isFinite(n)||n===104||n===105)return;if(n>=106)n-=2;migrated[n]=v})}else{let v2=readStore('zx-memory-v2'),hasV2=v2!==null,old=hasV2?v2:(readStore('zx-memory-v1')||{});Object.entries(old).forEach(([k,v])=>{let n=Number(k);if(!Number.isFinite(n))return;if(!hasV2&&n>=2)n+=1;if(n>=59)n+=1;if(n===104||n===105)return;if(n>=106)n-=2;migrated[n]=v})}saved=migrated;writeStore(KEY,saved)}
+let view=[...ITEMS],idx=0;
+const $=s=>document.querySelector(s),norm=s=>s.toLowerCase().replace(/[\s，。；：、（）()【】\[\]·*?？/\\_-]/g,'');
+function persist(){writeStore(KEY,saved)}function state(item){return saved[item.id]||(saved[item.id]={})}
+function pieces(text){let clean=text.replace(/【(?:总结)?助记：[^】]*】/g,'').replace(/\s+(?=(?:[（(]?\d+[）).、．]|\d+\s))/g,'\n');return clean.split(/\n|[；;。●]/).map(x=>x.replace(/^\s*(?:[（(]?\d+[）).、．]?|[一二三四五六七八九十]+[、.．])\s*/,'').trim()).filter(x=>norm(x).length>=2)}
+function hideFeedback(){let hint=$('#hint'),standard=$('#standard'),result=$('#result');hint.classList.remove('show');standard.classList.remove('show');result.className='result';result.innerHTML='';$('#hintBtn').textContent='显示助记';$('#standardBtn').textContent='查看标准答案'}
+function scrollToCard(){let card=$('#card');if(card)card.scrollIntoView({block:'start',behavior:'smooth'})}
+function setQuestionControlsDisabled(disabled){$('#prev').disabled=disabled;$('#next').disabled=disabled;$('#shuffle').disabled=disabled;$('#star').disabled=disabled}
+function render(){let card=$('#card');if(!view.length){idx=0;card.classList.add('is-empty');$('#counter').textContent='0 / 0';$('#status').textContent='';$('#question').textContent='没有符合条件的题目';hideFeedback();setQuestionControlsDisabled(true);updateScore();return}card.classList.remove('is-empty');setQuestionControlsDisabled(false);if(!Number.isFinite(idx))idx=0;idx=Math.max(0,Math.min(idx,view.length-1));let it=view[idx],s=state(it);$('#counter').textContent=`第 ${idx+1} / ${view.length} 题 · 总题号 ${it.id}`;$('#question').textContent=it.question;$('#hint span').textContent=it.hint||'本题未提供助记';hideFeedback();$('#answer').value=s.draft||'';$('#standard').textContent=it.answer;$('#status').textContent=s.correct===true?'✓ 已掌握':s.correct===false?'待复习':'';$('#star').classList.toggle('active',!!s.star);$('#star').textContent=s.star?'★ 已收藏':'☆ 收藏';updateScore()}
+function updateScore(){let mastered=ITEMS.filter(x=>state(x).correct===true).length;$('#scoreText').textContent=`${mastered} / ${ITEMS.length}`;$('#progress').style.width=(mastered/ITEMS.length*100)+'%'}
+function check(){if(!view.length)return;let it=view[idx],input=$('#answer').value.trim(),s=state(it);if(!input){$('#result').className='result bad show';$('#result').textContent='请先写下答案，再进行验证。';return}let n=norm(input),ps=pieces(it.answer),hits=ps.filter(p=>{let k=norm(p);if(n.includes(k))return true;let tokens=p.split(/[，、：:,]/).map(norm).filter(x=>x.length>=2);return tokens.length&&tokens.filter(t=>n.includes(t)).length/ tokens.length>=.55}),ratio=ps.length?hits.length/ps.length:0;let ok=ratio>=.58||norm(it.answer)===n;s.draft=input;s.correct=ok;s.last=Date.now();persist();$('#result').className='result '+(ok?'ok':'bad')+' show';$('#result').innerHTML=ok?`验证通过：覆盖了约 <b>${Math.round(ratio*100)}%</b> 的关键点。`:`还差一些：目前覆盖约 <b>${Math.round(ratio*100)}%</b>。可显示助记或标准答案后补充。`;$('#status').textContent=ok?'✓ 已掌握':'待复习';updateScore()}
+// 搜索只匹配题目标题，不检索答案和助记。
+function applyFilter(){let terms=$('#search').value.trim().split(/\s+/).map(norm).filter(Boolean),f=$('#filter').value;view=ITEMS.filter(x=>{let question=norm(x.question||''),keywordOk=terms.every(term=>question.includes(term)),filterOk=f==='all'||(f==='wrong'&&state(x).correct===false)||(f==='star'&&state(x).star)||(f==='unseen'&&state(x).correct===undefined);return keywordOk&&filterOk});idx=0;render()}
+function jumpTo(){let box=$('#jumpNumber'),n=Number(box.value);if(!Number.isInteger(n)||n<1||n>ITEMS.length){box.classList.add('invalid');box.value='';box.placeholder=`1-${ITEMS.length}`;return}box.classList.remove('invalid');$('#search').value='';$('#filter').value='all';view=[...ITEMS];idx=n-1;render();box.value=n;window.scrollTo({top:0,behavior:'smooth'})}
+$('#check').onclick=check;$('#answer').oninput=e=>{if(view.length){state(view[idx]).draft=e.target.value;persist()}};$('#hintBtn').onclick=()=>{let x=$('#hint');x.classList.toggle('show');$('#hintBtn').textContent=x.classList.contains('show')?'隐藏助记':'显示助记'};$('#standardBtn').onclick=()=>{let x=$('#standard');x.classList.toggle('show');$('#standardBtn').textContent=x.classList.contains('show')?'隐藏标准答案':'查看标准答案'};$('#clear').onclick=()=>{if(!view.length)return;let s=state(view[idx]);$('#answer').value='';hideFeedback();s.draft='';delete s.correct;delete s.last;persist();$('#status').textContent='';updateScore();if($('#filter').value==='wrong'){applyFilter();if(view.length)$('#answer').focus();return}$('#answer').focus()};$('#prev').onclick=()=>{if(!view.length)return;idx=(idx-1+view.length)%view.length;render();scrollToCard()};$('#next').onclick=()=>{if(!view.length)return;idx=(idx+1)%view.length;render();scrollToCard()};$('#jumpBtn').onclick=jumpTo;$('#jumpNumber').onkeydown=e=>{if(e.key==='Enter')jumpTo()};$('#jumpNumber').oninput=e=>e.target.classList.remove('invalid');$('#shuffle').onclick=()=>{if(view.length){idx=Math.floor(Math.random()*view.length);render();scrollToCard()}};$('#star').onclick=()=>{if(!view.length)return;let s=state(view[idx]);s.star=!s.star;persist();if($('#filter').value==='star'&&!s.star){applyFilter();return}$('#star').classList.toggle('active',!!s.star);$('#star').textContent=s.star?'★ 已收藏':'☆ 收藏'};$('#search').oninput=applyFilter;$('#filter').onchange=applyFilter;document.addEventListener('keydown',e=>{let target=e.target,typing=target&&(/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)||target.isContentEditable);if(e.ctrlKey&&e.key==='Enter'&&(!typing||target.id==='answer')){e.preventDefault();check()}if(!typing&&e.altKey&&e.key==='ArrowLeft'){e.preventDefault();$('#prev').click()}if(!typing&&e.altKey&&e.key==='ArrowRight'){e.preventDefault();$('#next').click()}});$('#jumpNumber').max=ITEMS.length;render();
+</script></body></html>
